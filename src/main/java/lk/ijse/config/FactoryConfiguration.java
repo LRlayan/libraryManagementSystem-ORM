@@ -1,6 +1,6 @@
 package lk.ijse.config;
 
-import lk.ijse.entity.User;
+import lk.ijse.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -11,7 +11,12 @@ public class FactoryConfiguration {
     private SessionFactory sessionFactory;
 
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration().configure().addAnnotatedClass(User.class);
+        Configuration configuration = new Configuration().configure()
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Admin.class)
+                .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(Branches.class)
+                .addAnnotatedClass(Transaction.class);
         sessionFactory = configuration.buildSessionFactory(new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build());
     }
 
