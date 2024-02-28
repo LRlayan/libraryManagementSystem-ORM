@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -42,9 +43,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ScrollPane layoutX="1012.0" layoutY="170.0" prefHeight="516.0" prefWidth="320.0" style="-fx-background-color: #FFFFFF;">
+      <ScrollPane layoutX="1012.0" layoutY="170.0" prefHeight="516.0" prefWidth="320.0" style="-fx-background-color: #FFFFFF;" styleClass="transparent" stylesheets="@../styleSheet/styleSheet.css">
          <content>
-            <VBox fx:id="vBox" prefHeight="517.0" prefWidth="320.0" />
+            <HBox fx:id="cardLayout" prefHeight="516.0" prefWidth="316.0">
+               <children>
+                  <VBox fx:id="vBox" prefHeight="516.0" prefWidth="305.0" />
+               </children>
+            </HBox>
          </content>
       </ScrollPane>
       <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="1057.0" layoutY="96.0">
