@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="545.0" prefWidth="779.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
    <children>
       <AnchorPane fx:id="loginAnchorpane" prefHeight="545.0" prefWidth="779.0" style="-fx-background-color: #040D12;">
@@ -41,7 +40,7 @@
             </Label>
             <JFXTextField layoutX="267.0" layoutY="343.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" />
             <JFXTextField layoutX="267.0" layoutY="425.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" />
-            <JFXButton layoutX="342.0" layoutY="478.0" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #183D3D;" text="Login" textFill="WHITE" />
+            <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="342.0" layoutY="478.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #183D3D;" text="Login" textFill="WHITE" />
             <Label layoutX="100.0" layoutY="16.0" text="BOOK WORM LIBRARY" textFill="#cdbebe">
                <font>
                   <Font size="15.0" />
