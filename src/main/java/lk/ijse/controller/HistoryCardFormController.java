@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import lk.ijse.entity.Transaction;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,5 +33,13 @@ public class HistoryCardFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void setData(Transaction transaction){
+        bookTitle.setText(transaction.getBookTitle());
+        startDate.setText(transaction.getStartDate());
+        returnDate.setText(transaction.getReturnDate());
+        time.setText(transaction.getTime());
+        nameOfUser.setText(transaction.getNameOfUSer());
     }
 }
