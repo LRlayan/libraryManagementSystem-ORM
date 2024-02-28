@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.UserFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="710.0" prefWidth="1358.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserFormController">
+   <children>
+      <Label layoutX="23.0" layoutY="15.0" prefHeight="39.0" prefWidth="212.0" text="Label" textFill="#e1cece">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="-100.0" endY="474.0" layoutX="1084.0" layoutY="212.0" startX="-100.0" startY="-82.0" stroke="#8cd39b" />
+      <Label alignment="TOP_RIGHT" layoutX="1137.0" layoutY="123.0" prefHeight="39.0" prefWidth="70.0" text="History" textFill="#d0bfbf">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="92.0" layoutY="52.0" prefHeight="59.0" prefWidth="1198.0" promptText="search books" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#639067">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXTextField>
+      <JFXButton fx:id="btnLogout" buttonType="RAISED" layoutX="1239.0" layoutY="23.0" onAction="#logoutOnAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #183D3D;" text="logout" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ScrollPane layoutX="1012.0" layoutY="170.0" prefHeight="516.0" prefWidth="320.0" style="-fx-background-color: #FFFFFF;">
+         <content>
+            <VBox fx:id="vBox" prefHeight="517.0" prefWidth="320.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="1057.0" layoutY="96.0">
+         <image>
+            <Image url="@../image/histryIcon.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
