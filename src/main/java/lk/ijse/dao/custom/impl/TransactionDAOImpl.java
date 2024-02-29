@@ -1,4 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
-public class TransactionDAOImpl {
+import lk.ijse.dao.custom.TransactionDAO;
+
+public class TransactionDAOImpl implements TransactionDAO {
 }
