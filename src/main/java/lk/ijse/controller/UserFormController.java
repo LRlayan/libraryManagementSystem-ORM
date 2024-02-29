@@ -72,4 +72,9 @@ public class UserFormController implements Initializable {
         list.add(transaction1);
          return list;
     }
+
+    @FXML
+    void settingOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/settingForm.fxml");
+    }
 }
