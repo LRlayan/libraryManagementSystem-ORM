@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom;
 
-public interface HistoryCardFormBO {
+import lk.ijse.bo.SuperBO;
+
+public interface HistoryCardFormBO extends SuperBO {
 }
