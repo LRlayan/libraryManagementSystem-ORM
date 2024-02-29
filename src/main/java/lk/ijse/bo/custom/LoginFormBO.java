@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom;
 
-public interface LoginFormBO {
+import lk.ijse.bo.SuperBO;
+
+public interface LoginFormBO extends SuperBO {
 }
