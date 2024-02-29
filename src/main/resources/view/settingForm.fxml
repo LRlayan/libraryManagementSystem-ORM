@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="494.0" prefWidth="420.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SettingFormController">
+   <children>
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="14.0" layoutY="14.0">
+         <image>
+            <Image url="@../image/settingIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="60.0" layoutY="19.0" text="Setting" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Line endX="225.0" layoutX="176.0" layoutY="32.0" startX="-55.0" stroke="#46a451" />
+      <Label layoutX="25.0" layoutY="68.0" text="Change Username" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCurrentUsername" layoutX="67.0" layoutY="106.0" prefHeight="36.0" prefWidth="285.0" promptText="current username" unFocusColor="#46a451" />
+      <JFXTextField fx:id="txtNewUsername" layoutX="67.0" layoutY="146.0" prefHeight="36.0" prefWidth="285.0" promptText="new username" unFocusColor="#46a451" />
+      <JFXTextField fx:id="txtConfirmUsername" layoutX="67.0" layoutY="186.0" prefHeight="36.0" prefWidth="285.0" promptText="confirm username" unFocusColor="#46a451" />
+      <JFXTextField fx:id="txtConfirmPassword" layoutX="67.0" layoutY="366.0" prefHeight="36.0" prefWidth="285.0" promptText="confirm password" unFocusColor="#46a451" />
+      <JFXTextField fx:id="txtNewPassword" layoutX="67.0" layoutY="326.0" prefHeight="36.0" prefWidth="285.0" promptText="new password" unFocusColor="#46a451" />
+      <JFXTextField fx:id="txtCurrentPassword" layoutX="67.0" layoutY="286.0" prefHeight="36.0" prefWidth="285.0" promptText="confirm username" text="current password" unFocusColor="#46a451" />
+      <Label layoutX="25.0" layoutY="252.0" text="Change Password" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="261.0" layoutY="431.0" onAction="#saveChangesOnAction" style="-fx-background-color: #183D3D;" text="Save Changes" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="160.0" layoutY="431.0" onAction="#closeButtonOnAction" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #183D3D;" text="Close" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>
