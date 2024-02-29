@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class RegisterFormBOImpl {
+import lk.ijse.bo.custom.RegisterFormBO;
+
+public class RegisterFormBOImpl implements RegisterFormBO {
 }
