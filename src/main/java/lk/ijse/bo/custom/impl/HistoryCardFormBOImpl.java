@@ -1,4 +1,6 @@
 package lk.ijse.bo.custom.impl;
 
-public class HistoryCardFormBOImpl {
+import lk.ijse.bo.custom.HistoryCardFormBO;
+
+public class HistoryCardFormBOImpl implements HistoryCardFormBO {
 }
