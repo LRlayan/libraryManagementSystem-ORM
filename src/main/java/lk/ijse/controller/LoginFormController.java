@@ -19,6 +19,9 @@ public class LoginFormController {
     @FXML
     private JFXButton btnLogin;
 
+    @FXML
+    private JFXButton btnClose;
+
     PageControl pageControl = new PageControl();
 
     @FXML
@@ -35,5 +38,10 @@ public class LoginFormController {
 
     public void registerOnAction(ActionEvent event) throws IOException {
         pageControl.changeOnlyAnchorPane("/view/registerForm.fxml" , loginAnchorpane);
+    }
+
+    @FXML
+    void closeButtonOnAction(ActionEvent event) {
+        pageControl.closeWindow(btnClose);
     }
 }
