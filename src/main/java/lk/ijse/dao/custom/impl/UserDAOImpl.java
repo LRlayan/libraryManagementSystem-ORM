@@ -6,6 +6,8 @@ import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class UserDAOImpl implements UserDAO {
     @Override
     public boolean save(User user) {
@@ -20,12 +22,25 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update() {
+    public boolean update(User user) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
 
+        //session.createQuery()
+
+        transaction.commit();
+        session.close();
+        return false;
     }
 
     @Override
     public void delete() {
 
+    }
+
+    @Override
+    public List<User> getAll() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        return session.createQuery("FROM User ").list();
     }
 }
