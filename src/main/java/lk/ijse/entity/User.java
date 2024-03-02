@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,4 +18,17 @@ public class User {
     private String name;
     private String email;
     private String passwords;
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    private List<Transaction> transactionList;
+
+    public User(String passwords) {
+        this.passwords = passwords;
+    }
+
+    public User(long id, String name, String email, String passwords) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.passwords = passwords;
+    }
 }
