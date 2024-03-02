@@ -21,6 +21,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     private List<Transaction> transactionList;
 
+    @ManyToMany(mappedBy = "userList",cascade = CascadeType.ALL)
+    private List<Books> booksList;
+
     public User(String passwords) {
         this.passwords = passwords;
     }
