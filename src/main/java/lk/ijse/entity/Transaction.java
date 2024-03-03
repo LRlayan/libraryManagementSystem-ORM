@@ -18,11 +18,4 @@ public class Transaction {
     private String time;
     private String startDate;
     private String returnDate;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Books book;
 }

@@ -15,7 +15,4 @@ public class Admin {
     private long id;
     private String username;
     private String password;
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branches branches;
 }

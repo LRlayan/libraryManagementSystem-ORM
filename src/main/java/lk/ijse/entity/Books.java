@@ -19,12 +19,4 @@ public class Books {
     private String author;
     private String genre;
     private String availabilityStatus;
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "book")
-    private List<Transaction> transactionList;
-
-    @ManyToMany
-    private List<User> userList;
-
-    @ManyToMany(mappedBy = "booksList" , cascade = CascadeType.ALL)
-    private List<Branches> branchesList;
 }

@@ -18,11 +18,7 @@ public class User {
     private String name;
     private String email;
     private String passwords;
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
-    private List<Transaction> transactionList;
 
-    @ManyToMany(mappedBy = "userList",cascade = CascadeType.ALL)
-    private List<Books> booksList;
 
     public User(String passwords) {
         this.passwords = passwords;
