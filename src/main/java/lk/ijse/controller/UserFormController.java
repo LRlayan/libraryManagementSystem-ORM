@@ -55,7 +55,7 @@ public class UserFormController implements Initializable {
          List<Transaction> list = new ArrayList<>();
          Transaction transaction = new Transaction();
          transaction.setId(0);
-         transaction.setBookTitle("Madolduwa");
+         transaction.setBookTitle("asdcs");
          transaction.setTime("10.20");
          transaction.setStartDate("2024-02-28");
          transaction.setReturnDate("2024-03-15");
