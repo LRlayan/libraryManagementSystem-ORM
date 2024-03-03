@@ -15,7 +15,7 @@
       <AnchorPane fx:id="loginAnchorpane" prefHeight="545.0" prefWidth="779.0" style="-fx-background-color: #040D12;">
          <children>
             <Line endX="763.0" endY="45.0" layoutY="9.0" startX="15.0" startY="45.0" stroke="#93b1a6" strokeWidth="2.0" />
-            <JFXButton buttonType="RAISED" layoutX="644.0" layoutY="63.0" onAction="#registerOnAction" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: #183D3D;" text="Register" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="644.0" layoutY="63.0" onAction="#registerOnAction" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: #019104;" text="Register" textFill="WHITE">
                <font>
                   <Font name="Ebrima" size="14.0" />
                </font>
@@ -28,19 +28,19 @@
                   <Image url="@../image/login.png" />
                </image>
             </ImageView>
-            <Label layoutX="268.0" layoutY="304.0" text="Username" textFill="#cdbebe">
+            <Label layoutX="268.0" layoutY="304.0" text="Username" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="267.0" layoutY="386.0" text="Password" textFill="#cdbebe">
+            <Label layoutX="267.0" layoutY="386.0" text="Password" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="267.0" layoutY="343.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" />
-            <JFXTextField layoutX="267.0" layoutY="425.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" />
-            <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="342.0" layoutY="478.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #183D3D;" text="Login" textFill="WHITE" />
+            <JFXTextField layoutX="267.0" layoutY="343.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#006e0c" />
+            <JFXTextField layoutX="267.0" layoutY="425.0" prefHeight="25.0" prefWidth="243.0" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#006e0c" />
+            <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="342.0" layoutY="478.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #019104;" text="Login" textFill="WHITE" />
             <Label layoutX="100.0" layoutY="16.0" text="BOOK WORM LIBRARY" textFill="#cdbebe">
                <font>
                   <Font size="15.0" />
