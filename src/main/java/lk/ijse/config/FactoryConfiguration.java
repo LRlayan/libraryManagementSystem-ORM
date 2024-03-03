@@ -19,7 +19,7 @@ public class FactoryConfiguration {
 
         MetadataSources metadataSources = new MetadataSources(standardServiceRegistryBuilder.build());
 
-        metadataSources.addAnnotatedClass(User.class).addAnnotatedClass(Transaction.class).addAnnotatedClass(Books.class).addAnnotatedClass(Admin.class).addAnnotatedClass(Branches.class);
+        metadataSources.addAnnotatedClass(User.class).addAnnotatedClass(Books.class).addAnnotatedClass(Admin.class).addAnnotatedClass(Branches.class).addAnnotatedClass(Transaction.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder().build();
         sessionFactory = metadata.getSessionFactoryBuilder().build();
