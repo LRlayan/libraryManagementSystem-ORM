@@ -16,9 +16,4 @@ public class Branches {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String branchName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "admin")
-    private List<Admin> adminList;
-
-    @ManyToMany
-    private List<Books> booksList;
 }
