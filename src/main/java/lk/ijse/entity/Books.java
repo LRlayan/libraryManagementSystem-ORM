@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
@@ -19,4 +18,7 @@ public class Books {
     private String author;
     private String genre;
     private String availabilityStatus;
+    @ManyToMany(mappedBy = "bookList")
+    private List<User> userList;
+
 }

@@ -18,7 +18,14 @@ public class User {
     private String name;
     private String email;
     private String passwords;
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branches branches;
 
+    @ManyToMany
+    @JoinTable(name = "Transaction")
+    @Column(name = "user_id , branch_id")
+    private List<Books> bookList;
 
     public User(String passwords) {
         this.passwords = passwords;
