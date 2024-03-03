@@ -35,46 +35,28 @@ public class UserFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        history = new ArrayList<>(transactionsHistory());
-        try {
-            for (int i = 0; i < history.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/view/historyCardForm.fxml"));
 
-                cardLayout = fxmlLoader.load();
-                HistoryCardFormController historyCardFormController = fxmlLoader.getController();
-                historyCardFormController.setData(history.get(i));
-                vBox.getChildren().add(cardLayout);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
-    private List<Transaction> transactionsHistory(){
-         List<Transaction> list = new ArrayList<>();
-         Transaction transaction = new Transaction();
-         transaction.setId(0);
-         transaction.setBookTitle("asdcs");
-         transaction.setTime("10.20");
-         transaction.setStartDate("2024-02-28");
-         transaction.setReturnDate("2024-03-15");
-         transaction.setNameOfUSer("Ramesh");
-        list.add(transaction);
-
-        Transaction transaction1 = new Transaction();
-        transaction.setId(1);
-        transaction.setBookTitle("Madolduwa");
-        transaction.setTime("10.20");
-        transaction.setStartDate("2024-02-28");
-        transaction.setReturnDate("2024-03-15");
-        transaction.setNameOfUSer("layan");
-        list.add(transaction1);
-         return list;
+    @FXML
+    void historyOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/historyCardForm.fxml");
     }
 
     @FXML
     void settingOnAction(ActionEvent event) throws IOException {
         pageControl.popUpWindow("/view/settingForm.fxml");
+    }
+
+
+    @FXML
+    void newAdminOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/newAdminForm.fxml");
+    }
+
+
+    @FXML
+    void branchOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/branchForm.fxml");
     }
 }
