@@ -20,17 +20,17 @@
             <Font size="46.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="150.0" text="Username" textFill="#cdbebe">
+      <Label layoutX="57.0" layoutY="150.0" text="Username" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="320.0" text="Password" textFill="#cdbebe">
+      <Label layoutX="57.0" layoutY="320.0" text="Password" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="236.0" text="Email" textFill="#cdbebe">
+      <Label layoutX="57.0" layoutY="236.0" text="Email" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="271.0" layoutY="421.0" onAction="#registerOnAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #183D3D;" text="Register" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="271.0" layoutY="421.0" onAction="#registerOnAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #019104;" text="Register" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -60,7 +60,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="713.0" layoutY="77.0" onMouseClicked="#loginOnAction" text="Login" textFill="#cdbebe">
+      <Label layoutX="713.0" layoutY="77.0" onMouseClicked="#loginOnAction" text="Login" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -68,7 +68,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Line endX="-61.0" layoutX="812.0" layoutY="100.0" startX="-100.0" stroke="#46a451" />
+      <Line endX="-61.0" layoutX="812.0" layoutY="100.0" startX="-100.0" stroke="LIME" />
       <Line endX="763.0" endY="45.0" layoutY="9.0" startX="15.0" startY="45.0" stroke="#46a451" strokeWidth="2.0" />
       <Label layoutX="297.0" layoutY="506.0" text="All Rights Book Worm Library 2024" textFill="WHITE" />
       <Label fx:id="lblPassword" layoutX="57.0" layoutY="382.0" prefHeight="35.0" prefWidth="306.0" textFill="RED" />
