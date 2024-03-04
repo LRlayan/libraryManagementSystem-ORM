@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BookFormController">
+   <children>
+      <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="19.0" layoutY="24.0">
+         <image>
+            <Image url="@../image/book.png" />
+         </image>
+      </ImageView>
+      <Line endX="491.0" layoutX="86.0" layoutY="46.0" startX="-8.5" stroke="#00a108" />
+      <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="547.0" layoutY="8.0">
+         <image>
+            <Image url="@../image/closeIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="546.0" layoutY="9.0" onAction="#closeOnAction" prefHeight="28.0" prefWidth="32.0" text="." textFill="#574c4c" />
+      <TableView fx:id="bookTable" layoutX="43.0" layoutY="139.0" prefHeight="227.0" prefWidth="515.0">
+        <columns>
+          <TableColumn fx:id="colBookId" prefWidth="75.0" text="Book_Id" />
+          <TableColumn fx:id="colAuthor" prefWidth="151.0" text="Author" />
+            <TableColumn fx:id="colGenre" prefWidth="151.0" text="Genre" />
+            <TableColumn fx:id="colAvailability_Status" prefWidth="137.0" text="Availibility_Status" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="474.0" layoutY="89.0" onAction="#newBookOnAction" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #019104;" text="New +" textFill="WHITE" />
+   </children>
+</AnchorPane>
