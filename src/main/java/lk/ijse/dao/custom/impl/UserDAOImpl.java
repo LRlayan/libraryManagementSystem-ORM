@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<Books> getAll() {
+    public List<User> getAll() {
         Session session = FactoryConfiguration.getInstance().getSession();
         return session.createQuery("FROM User ").list();
     }
