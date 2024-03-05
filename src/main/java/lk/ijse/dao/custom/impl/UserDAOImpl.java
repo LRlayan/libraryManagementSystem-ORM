@@ -2,6 +2,7 @@ package lk.ijse.dao.custom.impl;
 
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
+import lk.ijse.entity.Books;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Books> getAll() {
         Session session = FactoryConfiguration.getInstance().getSession();
         return session.createQuery("FROM User ").list();
     }
