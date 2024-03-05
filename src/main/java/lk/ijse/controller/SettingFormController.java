@@ -58,10 +58,6 @@ public class SettingFormController {
 
     RegisterFormBO registerFormBO = (RegisterFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.REGISTER);
     SettingFormBO settingFormBO = (SettingFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.SETTING);
-    @FXML
-    void closeButtonOnAction(ActionEvent event) {
-        pageControl.closeWindow(btnClose);
-    }
 
     @FXML
     void saveChangesOnAction(ActionEvent event) {
