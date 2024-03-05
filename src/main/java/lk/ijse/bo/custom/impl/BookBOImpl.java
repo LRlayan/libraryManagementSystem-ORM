@@ -13,22 +13,22 @@ public class BookBOImpl implements BookBO {
     BookDAO bookDAO = (BookDAO) DAOFactory.getDaoFactory().DAOTypes(DAOFactory.DAOTypes.BOOK);
 
     @Override
-    public boolean save(BookDTO book) {
+    public boolean saveBook(BookDTO book) {
         return false;
     }
 
     @Override
-    public boolean update(BookDTO book) {
+    public boolean updateBook(BookDTO book) {
         return false;
     }
 
     @Override
-    public void delete() {
+    public void deleteBook() {
 
     }
 
     @Override
-    public List<BookDTO> getAll() {
+    public List<BookDTO> getAllBook() {
         List<Books> bookList = bookDAO.getAll();
         List<BookDTO> bookDTOS = new ArrayList<>();
 

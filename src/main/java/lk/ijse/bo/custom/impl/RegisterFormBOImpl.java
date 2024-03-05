@@ -19,7 +19,7 @@ public class RegisterFormBOImpl implements RegisterFormBO {
     }
 
     @Override
-    public List<RegisterDTO> getAll() {
+    public List<RegisterDTO> getAllUser() {
         List<User> getAll = userDAO.getAll();
         List<RegisterDTO> registerDTO = new ArrayList<>();
 

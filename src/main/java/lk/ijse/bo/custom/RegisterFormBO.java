@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RegisterFormBO extends SuperBO {
     boolean saveUser(RegisterDTO registerDTO);
-    List<RegisterDTO> getAll();
+    List<RegisterDTO> getAllUser();
 }
