@@ -1,6 +1,7 @@
 package lk.ijse.dao.custom.impl;
 
 import lk.ijse.dao.custom.TransactionDAO;
+import lk.ijse.entity.Books;
 import lk.ijse.entity.User;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class TransactionDAOImpl implements TransactionDAO {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Books> getAll() {
         return null;
     }
 }
