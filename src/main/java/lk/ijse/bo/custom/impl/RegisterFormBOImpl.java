@@ -15,17 +15,18 @@ public class RegisterFormBOImpl implements RegisterFormBO {
 
     @Override
     public boolean saveUser(RegisterDTO registerDTO) {
-        return userDAO.save(new User(registerDTO.getId(),registerDTO.getName(),registerDTO.getEmail(),registerDTO.getPasswords()));
+        return userDAO.save(new User(registerDTO.getId(), registerDTO.getName(), registerDTO.getEmail(), registerDTO.getPasswords()));
     }
 
     @Override
     public List<RegisterDTO> getAll() {
-        List<User> getAll = userDAO.getAll();
+        //  List<User> getAll = userDAO.getAll();
         List<RegisterDTO> registerDTO = new ArrayList<>();
 
-        for (User register : getAll){
-            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords()));
-        }
-        return registerDTO;
+//        for (User register : getAll){
+//            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords()));
+//        }
+//        return registerDTO;
+        return null;
     }
 }
