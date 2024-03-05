@@ -56,7 +56,6 @@ public class SettingFormController {
 
     PageControl pageControl = new PageControl();
 
-    RegisterFormBO registerFormBO = (RegisterFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.REGISTER);
     SettingFormBO settingFormBO = (SettingFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.SETTING);
 
     @FXML
@@ -90,7 +89,7 @@ public class SettingFormController {
 
     private boolean checkingUsername(String currentUsername , String newUsername , String confirmUsername) {
         boolean isChecked = false;
-        List<RegisterDTO> registerUsers = registerFormBO.getAll();
+        List<RegisterDTO> registerUsers = settingFormBO.getAllUser();
 
         for (int i = 0; i < registerUsers.size(); i++){
             if (currentUsername.equals(registerUsers.get(i).getName())){
