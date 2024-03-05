@@ -1,4 +1,8 @@
 package lk.ijse.dao.custom;
 
-public interface BookDAO {
+import lk.ijse.dao.CrudDAO;
+
+import java.awt.print.Book;
+
+public interface BookDAO extends CrudDAO<Book> {
 }
