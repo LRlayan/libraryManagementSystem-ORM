@@ -1,5 +1,6 @@
 package lk.ijse.dao;
 
+import lk.ijse.dao.custom.impl.BookDAOImpl;
 import lk.ijse.dao.custom.impl.TransactionDAOImpl;
 import lk.ijse.dao.custom.impl.UserDAOImpl;
 
@@ -20,6 +21,8 @@ public class DAOFactory {
                 return new UserDAOImpl();
             case TRANSACTION:
                 return new TransactionDAOImpl();
+            case BOOK:
+                return new BookDAOImpl();
             default:
                 return null;
         }
