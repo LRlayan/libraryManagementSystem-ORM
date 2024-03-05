@@ -20,13 +20,12 @@ public class RegisterFormBOImpl implements RegisterFormBO {
 
     @Override
     public List<RegisterDTO> getAll() {
-        //  List<User> getAll = userDAO.getAll();
+        List<User> getAll = userDAO.getAll();
         List<RegisterDTO> registerDTO = new ArrayList<>();
 
-//        for (User register : getAll){
-//            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords()));
-//        }
-//        return registerDTO;
-        return null;
+        for (User register : getAll){
+            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords()));
+        }
+        return registerDTO;
     }
 }
