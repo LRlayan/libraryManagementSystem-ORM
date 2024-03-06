@@ -11,12 +11,12 @@ import java.util.List;
 public class BookDAOImpl implements BookDAO {
 
     @Override
-    public boolean save(User user) {
+    public boolean save(Books user) {
         return false;
     }
 
     @Override
-    public boolean update(User user) {
+    public boolean update(Books user) {
         return false;
     }
 
