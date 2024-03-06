@@ -8,13 +8,13 @@ import java.util.List;
 
 public class TransactionDAOImpl implements TransactionDAO {
     @Override
-    public boolean save(User user) {
+    public boolean save(Transaction transaction) {
 
         return false;
     }
 
     @Override
-    public boolean update(User user) {
+    public boolean update(Transaction transaction) {
 
         return false;
     }
