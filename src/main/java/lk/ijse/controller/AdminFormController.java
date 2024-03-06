@@ -41,10 +41,6 @@ public class AdminFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        createAdmin();
-    }
-
-    private void createAdmin() {
 
     }
 }
