@@ -18,4 +18,10 @@ public class Admin {
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branches branches;
+
+    public Admin(long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 }
