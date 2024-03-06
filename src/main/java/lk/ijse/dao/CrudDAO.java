@@ -1,11 +1,10 @@
 package lk.ijse.dao;
 
-import lk.ijse.entity.User;
 import java.util.List;
 
 public interface CrudDAO<T> extends SuperDAO {
-   boolean save(User user);
-   boolean update(User user);
+   boolean save(T entity);
+   boolean update(T entity);
    void delete();
    List<T> getAll();
 }
