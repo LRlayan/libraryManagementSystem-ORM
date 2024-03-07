@@ -23,6 +23,7 @@ public class UserDAOImpl implements UserDAO {
 
         user.setBranches(branches);
         branches.setUserList(userList);
+        user.setBranchName(branches.getBranchName());
 
         userList.add(user);
         session.save(user);
