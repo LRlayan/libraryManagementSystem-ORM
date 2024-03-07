@@ -14,6 +14,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String username;
+    @Column(unique = true)
     private String password;
     @ManyToOne
     @JoinColumn(name = "branch_id")
