@@ -10,5 +10,5 @@ public interface AdminBO extends SuperBO {
     boolean saveAdmin(AdminDTO adminDTO);
     boolean updateAdmin(AdminDTO admin);
     boolean deleteAdmin();
-    List<Admin> getAllAdmin();
+    List<AdminDTO> getAllAdmin();
 }

@@ -44,6 +44,7 @@ public class AdminDAOImpl implements AdminDAO {
 
     @Override
     public List<Admin> getAll() {
-        return null;
+       Session session = FactoryConfiguration.getInstance().getSession();
+       return session.createQuery("from Admin").list();
     }
 }

@@ -6,6 +6,7 @@ import lk.ijse.dao.custom.AdminDAO;
 import lk.ijse.dto.AdminDTO;
 import lk.ijse.entity.Admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminBOImpl implements AdminBO {
@@ -28,7 +29,13 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public List<Admin> getAllAdmin() {
-        return null;
+    public List<AdminDTO> getAllAdmin() {
+        List<Admin> adminList = adminDAO.getAll();
+        List<AdminDTO> adminDTOS = new ArrayList<>();
+
+        for (Admin admin : adminList){
+            adminDTOS.add(new AdminDTO(admin.getId(),admin.getUsername(),admin.getPassword()));
+        }
+        return adminDTOS;
     }
 }
