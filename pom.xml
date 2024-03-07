@@ -56,6 +56,12 @@
             <artifactId>controlsfx</artifactId>
             <version>11.1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version> <!-- Use the latest version available -->
+        </dependency>
     </dependencies>
 
 </project>
