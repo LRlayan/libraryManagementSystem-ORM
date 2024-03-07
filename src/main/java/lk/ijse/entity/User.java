@@ -18,6 +18,7 @@ public class User {
     private String name;
     private String email;
     private String passwords;
+    private String branchName;
     @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branches branches;
@@ -31,7 +32,7 @@ public class User {
         this.passwords = passwords;
     }
 
-    public User(long id, String name, String email, String passwords) {
+    public User(long id, String name, String email, String passwords,String branchName) {
         this.id = id;
         this.name = name;
         this.email = email;
