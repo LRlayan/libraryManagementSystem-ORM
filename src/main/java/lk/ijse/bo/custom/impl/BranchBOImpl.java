@@ -16,7 +16,7 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean saveBranches(BranchDTO entity) {
-        return false;
+        return branchesDAO.save(new Branches(entity.getId(), entity.getBranchIdNumber(),entity.getBranchName()));
     }
 
     @Override
@@ -35,9 +35,8 @@ public class BranchBOImpl implements BranchBO {
 
         List<BranchDTO> branchDTOS = new ArrayList<>();
         for (Branches branches : branchesList){
-            branchDTOS.add(new BranchDTO(branches.getId(),branches.getBranchName()));
+            branchDTOS.add(new BranchDTO(branches.getId(),branches.getBranchIdNumber(),branches.getBranchName()));
         }
-       // AdminDAOImpl.branches = branchesList;
         return branchDTOS;
     }
 }
