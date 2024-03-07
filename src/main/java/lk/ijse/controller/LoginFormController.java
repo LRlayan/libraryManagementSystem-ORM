@@ -32,7 +32,6 @@ public class LoginFormController implements Initializable {
     private JFXButton btnClose;
 
     PageControl pageControl = new PageControl();
-
     AdminBO adminBO = (AdminBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.ADMIN);
 
     static int increment = 0;
