@@ -13,10 +13,12 @@ import lk.ijse.bo.custom.RegisterFormBO;
 import lk.ijse.dto.BranchDTO;
 import lk.ijse.dto.RegisterDTO;
 import lk.ijse.pageController.PageControl;
+import org.apache.commons.codec.binary.Base64;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -74,8 +76,10 @@ public class RegisterFormController implements Initializable {
         boolean pass = Pattern.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}",password);
         boolean branch = Pattern.matches("[a-zA-Z0-9]+",branchName);
         pageControl.hiddenErrorMessage(lblUsername,lblEmail,lblBranch,lblPassword , name,mail,pass,branch);
+
         if (!username.isEmpty() && name && !email.isEmpty() && mail && !password.isEmpty() && pass && !branchName.isEmpty() && branch){
-            var registerDTO = new RegisterDTO(0, username, email, password, branchName);
+            String encryptPassword = encryptPassword(password);
+            var registerDTO = new RegisterDTO(0, username, email, encryptPassword, branchName);
 
             try {
                  boolean isSaved = registerFormBO.saveUser(registerDTO);
@@ -104,6 +108,10 @@ public class RegisterFormController implements Initializable {
                 lblBranch.setText("Please select available branch");
             }
         }
+    }
+
+    private String encryptPassword(String text) {
+        return new String(Base64.encodeBase64(text.getBytes(StandardCharsets.UTF_8)));
     }
 
     @Override

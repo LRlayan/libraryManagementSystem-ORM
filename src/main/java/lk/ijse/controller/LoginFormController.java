@@ -8,13 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.AdminBO;
-import lk.ijse.bo.custom.BranchBO;
-import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dto.AdminDTO;
-import lk.ijse.dto.BranchDTO;
 import lk.ijse.pageController.PageControl;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,12 +35,6 @@ public class LoginFormController implements Initializable {
     void loginOnAction(ActionEvent event) throws IOException {
         pageControl.popUpWindow("/view/userForm.fxml");
         pageControl.closeWindow(btnLogin);
-
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        transaction.commit();
-        session.close();
 
         if (increment==0){
             createAdmin();
@@ -75,11 +64,6 @@ public class LoginFormController implements Initializable {
             var adminDTO = new AdminDTO(0,username,password);
             boolean isSaved = adminBO.saveAdmin(adminDTO);
 
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"saved admin").show();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"not saved admin").show();
-            }
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,"Not saved admin");
         }
