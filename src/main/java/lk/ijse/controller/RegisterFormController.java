@@ -73,13 +73,14 @@ public class RegisterFormController implements Initializable {
         boolean mail = Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",email);
         boolean pass = Pattern.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}",password);
         boolean branch = Pattern.matches("[a-zA-Z0-9]+",branchName);
-        hiddenErrorMessage(name,mail,pass,branch);
+        pageControl.hiddenErrorMessage(lblUsername,lblEmail,lblBranch,lblPassword , name,mail,pass,branch);
         if (!username.isEmpty() && name && !email.isEmpty() && mail && !password.isEmpty() && pass && !branchName.isEmpty() && branch){
             var registerDTO = new RegisterDTO(0, username, email, password, branchName);
 
             try {
                  boolean isSaved = registerFormBO.saveUser(registerDTO);
                  if (isSaved){
+                     pageControl.clearTextField(txtUsername,txtPassword,txtEmail,txtBranchName);
                      new Alert(Alert.AlertType.INFORMATION,"Save Successfully!").show();
                  }else {
                      new Alert(Alert.AlertType.ERROR,"Try again!").show();
@@ -102,21 +103,6 @@ public class RegisterFormController implements Initializable {
             if (!branchName.isEmpty() && !branch){
                 lblBranch.setText("Please select available branch");
             }
-        }
-    }
-
-    private void hiddenErrorMessage(boolean name,boolean mail,boolean pass,boolean branchName){
-        if(name){
-            lblUsername.setText("");
-        }
-        if (mail){
-            lblEmail.setText("");
-        }
-        if (pass){
-            lblPassword.setText("");
-        }
-        if (branchName){
-            lblPassword.setText("");
         }
     }
 
