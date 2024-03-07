@@ -25,7 +25,7 @@ public class SettingFormBOImpl implements SettingFormBO {
         List<RegisterDTO> registerDTO = new ArrayList<>();
 
         for (User register : getAll){
-            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords()));
+            registerDTO.add(new RegisterDTO(register.getId(), register.getName(), register.getEmail(),register.getPasswords(),register.getBranchName()));
         }
         return registerDTO;
     }
