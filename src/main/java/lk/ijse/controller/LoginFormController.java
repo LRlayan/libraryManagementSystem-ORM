@@ -34,7 +34,6 @@ public class LoginFormController implements Initializable {
     PageControl pageControl = new PageControl();
 
     AdminBO adminBO = (AdminBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.ADMIN);
-    BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BRANCH);
 
     static int increment = 0;
 
@@ -50,7 +49,6 @@ public class LoginFormController implements Initializable {
         session.close();
 
         if (increment==0){
-            currentBranches();
             createAdmin();
         }
         increment++;
@@ -68,24 +66,6 @@ public class LoginFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-    private void currentBranches() {
-        String branchIdNumber = "001";
-        String branchName = "Beruwala";
-
-        try{
-            var branch = new BranchDTO(0,branchIdNumber,branchName);
-            boolean isSaved = branchBO.saveBranches(branch);
-
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"saved Branch").show();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"not saved").show();
-            }
-
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,"not saved branches");
-        }
     }
 
     private void createAdmin() {
