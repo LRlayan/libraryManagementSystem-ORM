@@ -3,19 +3,27 @@ package lk.ijse.controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.RegisterFormBO;
+import lk.ijse.dto.BranchDTO;
 import lk.ijse.dto.RegisterDTO;
 import lk.ijse.pageController.PageControl;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.regex.Pattern;
 
-public class RegisterFormController {
+public class RegisterFormController implements Initializable {
 
     @FXML
     private JFXTextField txtUsername;
@@ -25,6 +33,12 @@ public class RegisterFormController {
 
     @FXML
     private JFXTextField txtPassword;
+
+    @FXML
+    private JFXTextField txtBranchName;
+
+    @FXML
+    private Label lblBranch;
 
     @FXML
     private AnchorPane registerAnchorpane;
@@ -40,6 +54,9 @@ public class RegisterFormController {
     PageControl pageControl = new PageControl();
     RegisterFormBO registerFormBO = (RegisterFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.REGISTER);
 
+    private List<BranchDTO>branchDTOList = registerFormBO.getAllBranches();
+    private Set<String> _branchDTOList = new HashSet<>();
+
     @FXML
     void loginOnAction(MouseEvent event) throws IOException {
         pageControl.changeOnlyAnchorPane("/view/loginForm.fxml" , registerAnchorpane);
@@ -50,13 +67,15 @@ public class RegisterFormController {
         String username = txtUsername.getText();
         String email = txtEmail.getText();
         String password = txtPassword.getText();
+        String branchName = txtBranchName.getText();
 
         boolean name = Pattern.matches("[a-zA-Z0-9]+",username);
         boolean mail = Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",email);
         boolean pass = Pattern.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}",password);
-        hiddenErrorMessage(name,mail,pass);
-        if (!username.isEmpty() && name && !email.isEmpty() && mail && !password.isEmpty() && pass){
-            var registerDTO = new RegisterDTO(0, username, email, password);
+        boolean branch = Pattern.matches("[a-zA-Z0-9]+",branchName);
+        hiddenErrorMessage(name,mail,pass,branch);
+        if (!username.isEmpty() && name && !email.isEmpty() && mail && !password.isEmpty() && pass && !branchName.isEmpty() && branch){
+            var registerDTO = new RegisterDTO(0, username, email, password, branchName);
 
             try {
                  boolean isSaved = registerFormBO.saveUser(registerDTO);
@@ -80,10 +99,13 @@ public class RegisterFormController {
             if (!password.isEmpty() && !pass){
                 lblPassword.setText("Please enter a strong password with capital letters,\nsimple letters, symbols and numbers and 8 characters.");
             }
+            if (!branchName.isEmpty() && !branch){
+                lblBranch.setText("Please select available branch");
+            }
         }
     }
 
-    private void hiddenErrorMessage(boolean name,boolean mail,boolean pass){
+    private void hiddenErrorMessage(boolean name,boolean mail,boolean pass,boolean branchName){
         if(name){
             lblUsername.setText("");
         }
@@ -93,5 +115,20 @@ public class RegisterFormController {
         if (pass){
             lblPassword.setText("");
         }
+        if (branchName){
+            lblPassword.setText("");
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        selectBranch();
+    }
+
+    private void selectBranch() {
+        branchDTOList.forEach(registerDTO ->{
+            _branchDTOList.add(registerDTO.getBranchName());
+        });
+        TextFields.bindAutoCompletion(txtBranchName, _branchDTOList);
     }
 }
