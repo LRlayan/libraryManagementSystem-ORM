@@ -7,6 +7,7 @@ import lk.ijse.entity.Branches;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDAOImpl implements AdminDAO {
@@ -18,15 +19,13 @@ public class AdminDAOImpl implements AdminDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Admin adminEntity = new Admin();
-      //  Branches branches = new Branches();
+        List<Admin> adminList = new ArrayList<>();
 
-        adminEntity.setBranches(branches);
-        adminEntity.setId(admin.getId());
-        adminEntity.setUsername(admin.getUsername());
-        adminEntity.setPassword(admin.getPassword());
+        admin.setBranches(branches);
+        adminList.add(admin);
+        branches.setAdminList(adminList);
 
-        session.save(adminEntity);
+        session.save(admin);
 
         transaction.commit();
         session.close();
