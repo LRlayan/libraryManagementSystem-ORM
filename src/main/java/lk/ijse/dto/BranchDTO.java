@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BranchDTO {
     private long id;
+    private String branchIdNumber;
     private String branchName;
 }
