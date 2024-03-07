@@ -13,6 +13,7 @@ import lk.ijse.pageController.PageControl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginFormController implements Initializable {
@@ -33,6 +34,9 @@ public class LoginFormController implements Initializable {
 
     @FXML
     void loginOnAction(ActionEvent event) throws IOException {
+
+        List<AdminDTO> allAdmin = adminBO.getAllAdmin();
+
         pageControl.popUpWindow("/view/userForm.fxml");
         pageControl.closeWindow(btnLogin);
 
