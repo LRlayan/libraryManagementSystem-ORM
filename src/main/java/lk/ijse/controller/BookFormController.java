@@ -6,8 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BookBO;
@@ -17,6 +16,7 @@ import lk.ijse.pageController.PageControl;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BookFormController implements Initializable {
@@ -90,6 +90,24 @@ public class BookFormController implements Initializable {
 
             for (int i = 0; i < obList.size(); i++) {
                 obList.get(i).getDelete().setOnAction(event -> {
+                    ButtonType buttonYes = new ButtonType("Yes" , ButtonBar.ButtonData.OK_DONE);
+                    ButtonType buttonNo = new ButtonType("No" , ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure delete Book!" , buttonYes , buttonNo).showAndWait();
+                    if (type.get().getText().equals("Yes")){
+
+                        try{
+                            boolean isDelete = bookBO.deleteBook();
+
+                            if (isDelete){
+                                new Alert(Alert.AlertType.INFORMATION,"Delete Successfully").show();
+                            }else {
+                                new Alert(Alert.AlertType.ERROR,"Please Try again later!").show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
 
                 });
             }
