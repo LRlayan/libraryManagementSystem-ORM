@@ -8,6 +8,6 @@ import java.util.List;
 public interface BookBO extends SuperBO {
     boolean saveBook(BookDTO book);
     boolean updateBook(BookDTO book);
-    void deleteBook();
+    boolean deleteBook();
     List<BookDTO> getAllBook();
 }
