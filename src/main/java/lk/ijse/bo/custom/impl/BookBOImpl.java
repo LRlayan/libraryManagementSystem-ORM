@@ -14,7 +14,7 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public boolean saveBook(BookDTO book) {
-        return false;
+       return bookDAO.save(new Books(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus()));
     }
 
     @Override
@@ -23,8 +23,9 @@ public class BookBOImpl implements BookBO {
     }
 
     @Override
-    public void deleteBook() {
+    public boolean deleteBook() {
 
+        return false;
     }
 
     @Override
