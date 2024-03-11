@@ -41,10 +41,14 @@ public class BookFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> colAvailability_Status;
 
+    @FXML
+    private TableColumn<?, ?> colUpdate;
+
+    @FXML
+    private TableColumn<?, ?> colDelete;
+
     PageControl pageControl = new PageControl();
-
     BookBO bookBO = (BookBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BOOK);
-
     ObservableList<BookTM> obList = FXCollections.observableArrayList();
 
     @FXML
@@ -66,10 +70,29 @@ public class BookFormController implements Initializable {
                     bookDTO.getTitle(),
                     bookDTO.getAuthor(),
                     bookDTO.getGenre(),
-                    bookDTO.getAvailabilityStatus()
+                    bookDTO.getAvailabilityStatus(),
+                    new JFXButton("Update"),
+                    new JFXButton("Delete")
                 ));
             }
             bookTable.setItems(obList);
+
+            for (int i = 0; i < obList.size(); i++) {
+                obList.get(i).getUpdate().setOnAction(event->{
+                    try{
+                        pageControl.popUpWindow("/view/BookUpdateForm.fxml");
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    bookTable.refresh();
+                });
+            }
+
+            for (int i = 0; i < obList.size(); i++) {
+                obList.get(i).getDelete().setOnAction(event -> {
+
+                });
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -81,6 +104,8 @@ public class BookFormController implements Initializable {
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("Author"));
         colGenre.setCellValueFactory(new PropertyValueFactory<>("Genre"));
         colAvailability_Status.setCellValueFactory(new PropertyValueFactory<>("AvailabilityStatus"));
+        colUpdate.setCellValueFactory(new PropertyValueFactory<>("Update"));
+        colDelete.setCellValueFactory(new PropertyValueFactory<>("Delete"));
     }
 
     @Override
