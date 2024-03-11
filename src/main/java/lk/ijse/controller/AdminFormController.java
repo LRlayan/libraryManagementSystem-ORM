@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,11 +13,13 @@ import java.util.ResourceBundle;
 
 public class AdminFormController implements Initializable {
 
+    @FXML
+    private JFXButton btnLogout;
     PageControl pageControl = new PageControl();
 
     @FXML
     public void logoutOnAction(ActionEvent event) {
-
+        pageControl.closeWindow(btnLogout);
     }
 
     @FXML
