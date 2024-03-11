@@ -21,4 +21,11 @@ public class Books {
     @ManyToMany(mappedBy = "bookList")
     private List<User> userList;
 
+    public Books(long id, String title, String author, String genre, String availabilityStatus) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.availabilityStatus = availabilityStatus;
+    }
 }
