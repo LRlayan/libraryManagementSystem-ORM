@@ -14,6 +14,7 @@ import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.tm.BookTM;
 import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -57,8 +58,8 @@ public class BookFormController implements Initializable {
     }
 
     @FXML
-    void newBookOnAction(ActionEvent event) {
-
+    void newBookOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/addNewBook.fxml");
     }
 
     public void loadAllBooks(){
@@ -117,8 +118,8 @@ public class BookFormController implements Initializable {
     }
 
     private void setCellValueFactory() {
-        colBookId.setCellValueFactory(new PropertyValueFactory<>("BookId"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colBookId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("title"));
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("Author"));
         colGenre.setCellValueFactory(new PropertyValueFactory<>("Genre"));
         colAvailability_Status.setCellValueFactory(new PropertyValueFactory<>("AvailabilityStatus"));
