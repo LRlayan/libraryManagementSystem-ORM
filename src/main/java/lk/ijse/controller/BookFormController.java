@@ -60,6 +60,7 @@ public class BookFormController implements Initializable {
     @FXML
     void newBookOnAction(ActionEvent event) throws IOException {
         pageControl.popUpWindow("/view/addNewBook.fxml");
+        pageControl.closeWindow(btnClose);
     }
 
     public void loadAllBooks(){
