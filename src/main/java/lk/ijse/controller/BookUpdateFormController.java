@@ -12,6 +12,7 @@ import lk.ijse.dto.BookDTO;
 import lk.ijse.pageController.PageControl;
 import org.controlsfx.control.textfield.TextFields;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
@@ -48,6 +49,12 @@ public class BookUpdateFormController implements Initializable {
 
     @FXML
     void windowCloseOnAction(ActionEvent event) {
+        pageControl.closeWindow(btnClose);
+    }
+
+    @FXML
+    void viewBookOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/bookForm.fxml");
         pageControl.closeWindow(btnClose);
     }
 
