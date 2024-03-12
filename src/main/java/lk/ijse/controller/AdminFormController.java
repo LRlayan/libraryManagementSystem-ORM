@@ -18,8 +18,9 @@ public class AdminFormController implements Initializable {
     PageControl pageControl = new PageControl();
 
     @FXML
-    public void logoutOnAction(ActionEvent event) {
+    public void logoutOnAction(ActionEvent event) throws IOException {
         pageControl.closeWindow(btnLogout);
+        pageControl.popUpWindow("/view/loginForm.fxml");
     }
 
     @FXML
