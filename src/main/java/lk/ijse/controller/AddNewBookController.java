@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BookBO;
 import lk.ijse.dto.BookDTO;
+import lk.ijse.pageController.PageControl;
 
 import java.util.regex.Pattern;
 
@@ -29,6 +30,7 @@ public class AddNewBookController {
     private JFXTextField txtAvailabilityStatus;
 
     BookBO bookBO = (BookBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BOOK);
+    PageControl pageControl = new PageControl();
 
     @FXML
     void saveBookOnAction(ActionEvent event) {
@@ -37,28 +39,31 @@ public class AddNewBookController {
         String genre = txtGenre.getText();
         String availableStatus = txtAvailabilityStatus.getText();
 
-        boolean name = Pattern.matches("[a-zA-Z0-9]+",bookName);
-        boolean bookAuthor = Pattern.matches("[a-zA-Z0-9]+",author);
-        boolean bookGenre = Pattern.matches("[a-zA-Z0-9]+",genre);
-        boolean status = Pattern.matches("[a-zA-Z0-9]+",availableStatus);
+        boolean name = Pattern.matches("[a-zA-Z0-9]+", bookName);
+        boolean bookAuthor = Pattern.matches("[a-zA-Z0-9]+", author);
+        boolean bookGenre = Pattern.matches("[a-zA-Z0-9]+", genre);
+        boolean status = Pattern.matches("[a-zA-Z0-9]+", availableStatus);
 
-        try{
-            if (!txtBookName.getText().isEmpty() && name && !txtAuthor.getText().isEmpty() && bookAuthor && !txtGenre.getText().isEmpty() && bookGenre && !txtAvailabilityStatus.getText().isEmpty() && status) {
-                boolean isSaved = bookBO.saveBook(new BookDTO(0, bookName, author, genre, availableStatus));
+        if (!txtBookName.getText().isEmpty() && name && !txtAuthor.getText().isEmpty() && bookAuthor && !txtGenre.getText().isEmpty() && bookGenre && !txtAvailabilityStatus.getText().isEmpty() && status) {
+            var bookDTO = new BookDTO(0, bookName, author, genre, availableStatus);
+
+            try {
+
+                boolean isSaved = bookBO.saveBook(bookDTO);
 
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "added book successfully").show();
                 } else {
                     new Alert(Alert.AlertType.ERROR, "please try again later").show();
                 }
+            }catch(Exception e){
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            e.printStackTrace();
         }
     }
 
     @FXML
     void windowCloseOnAction(ActionEvent event) {
-
+        pageControl.closeWindow(btnClose);
     }
 }
