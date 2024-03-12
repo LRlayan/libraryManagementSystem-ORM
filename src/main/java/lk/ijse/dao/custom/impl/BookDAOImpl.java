@@ -3,7 +3,6 @@ package lk.ijse.dao.custom.impl;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.entity.Books;
-import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,8 +17,8 @@ public class BookDAOImpl implements BookDAO {
 
         session.save(books);
 
-        session.close();
         transaction.commit();
+        session.close();
         return true;
     }
 
