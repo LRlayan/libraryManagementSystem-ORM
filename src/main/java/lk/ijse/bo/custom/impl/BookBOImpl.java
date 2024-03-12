@@ -18,11 +18,6 @@ public class BookBOImpl implements BookBO {
     }
 
     @Override
-    public boolean updateBook(BookDTO book) {
-        return false;
-    }
-
-    @Override
     public boolean deleteBook() {
 
         return false;
@@ -37,5 +32,10 @@ public class BookBOImpl implements BookBO {
             bookDTOS.add(new BookDTO(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus()));
         }
         return bookDTOS;
+    }
+
+    @Override
+    public boolean updateBook(BookDTO bookDTO) {
+        return bookDAO.update(new Books(bookDTO.getId(),bookDTO.getTitle(),bookDTO.getAuthor(),bookDTO.getGenre(),bookDTO.getAvailabilityStatus()));
     }
 }
