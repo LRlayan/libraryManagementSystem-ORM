@@ -83,6 +83,7 @@ public class BookFormController implements Initializable {
                 obList.get(i).getUpdate().setOnAction(event->{
                     try{
                         pageControl.popUpWindow("/view/BookUpdateForm.fxml");
+                        pageControl.closeWindow(btnClose);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
