@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.entity.Books;
@@ -23,8 +24,23 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public boolean update(Books user) {
-        return false;
+    public boolean update(Books books) {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("UPDATE Books b SET b.title = :title , b.author = :author , b.genre = :genre , b.availabilityStatus = :availableStatus WHERE b.id = :bookId");
+        query.setParameter("title" , books.getTitle());
+        query.setParameter("author" , books.getAuthor());
+        query.setParameter("genre" , books.getGenre());
+        query.setParameter("availableStatus" , books.getAvailabilityStatus());
+        query.setParameter("bookId" , books.getId());
+
+        int row = query.executeUpdate();
+
+        transaction.commit();
+        session.close();
+        return row > 0;
     }
 
     @Override
