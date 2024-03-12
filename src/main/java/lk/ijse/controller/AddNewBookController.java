@@ -10,6 +10,7 @@ import lk.ijse.bo.custom.BookBO;
 import lk.ijse.dto.BookDTO;
 import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class AddNewBookController {
@@ -65,5 +66,11 @@ public class AddNewBookController {
     @FXML
     void windowCloseOnAction(ActionEvent event) {
         pageControl.closeWindow(btnClose);
+    }
+
+    @FXML
+    void viewBookOnAction(ActionEvent event) throws IOException {
+        pageControl.closeWindow(btnClose);
+        pageControl.popUpWindow("/view/bookForm.fxml");
     }
 }
