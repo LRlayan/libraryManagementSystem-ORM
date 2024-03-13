@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BookBO extends SuperBO {
     boolean saveBook(BookDTO book);
-    boolean deleteBook();
+    boolean deleteBook(long id);
     List<BookDTO> getAllBook();
     boolean updateBook(BookDTO bookDTO);
 }
