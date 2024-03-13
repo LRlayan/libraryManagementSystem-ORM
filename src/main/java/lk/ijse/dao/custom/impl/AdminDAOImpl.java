@@ -38,8 +38,8 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public void delete() {
-
+    public boolean delete(long id) {
+        return false;
     }
 
     @Override
