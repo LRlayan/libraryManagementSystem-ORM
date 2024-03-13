@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BookBO;
 import lk.ijse.dto.BookDTO;
@@ -80,6 +82,13 @@ public class BookFormController implements Initializable {
             bookTable.setItems(obList);
 
             for (int i = 0; i < obList.size(); i++) {
+                obList.get(i).getDelete().setTextFill(Color.WHITE);
+                obList.get(i).getDelete().setStyle("-fx-background-color: red");
+                obList.get(i).getDelete().setAlignment(Pos.CENTER);
+                obList.get(i).getUpdate().setTextFill(Color.WHITE);
+                obList.get(i).getUpdate().setStyle("-fx-background-color: green");
+                obList.get(i).getUpdate().setAlignment(Pos.CENTER);
+
                 obList.get(i).getUpdate().setOnAction(event->{
                     try{
                         pageControl.popUpWindow("/view/BookUpdateForm.fxml");
@@ -92,23 +101,24 @@ public class BookFormController implements Initializable {
             }
 
             bookTable.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection)->{
-            for (int i = 0; i < obList.size(); i++) {
-                obList.get(i).getDelete().setOnAction(event -> {
-                    ButtonType buttonYes = new ButtonType("Yes" , ButtonBar.ButtonData.OK_DONE);
-                    ButtonType buttonNo = new ButtonType("No" , ButtonBar.ButtonData.CANCEL_CLOSE);
+                for (int i = 0; i < obList.size(); i++) {
+                    obList.get(i).getDelete().setOnAction(event -> {
 
-                    Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure delete Book!" , buttonYes , buttonNo).showAndWait();
-                        if (type.get().getText().equals("Yes")){
+                        ButtonType buttonYes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                        ButtonType buttonNo = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                            try{
+                        Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure delete Book!", buttonYes, buttonNo).showAndWait();
+                        if (type.get().getText().equals("Yes")) {
+
+                            try {
                                 boolean isDelete = bookBO.deleteBook(newSelection.getId());
 
-                                if (isDelete){
-                                     new Alert(Alert.AlertType.INFORMATION,"Delete Successfully").show();
-                                }else {
-                                     new Alert(Alert.AlertType.ERROR,"Please Try again later!").show();
+                                if (isDelete) {
+                                    new Alert(Alert.AlertType.INFORMATION, "Delete Successfully").show();
+                                } else {
+                                    new Alert(Alert.AlertType.ERROR, "Please Try again later!").show();
                                 }
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
