@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.AdminDAO;
 import lk.ijse.entity.Admin;
@@ -34,7 +35,19 @@ public class AdminDAOImpl implements AdminDAO {
 
     @Override
     public boolean update(Admin admin) {
-        return false;
+       Session session = FactoryConfiguration.getInstance().getSession();
+       Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("UPDATE Admin a SET a.id = :id , a.username = :username , a.password = :password WHERE a.id = :adminId");
+        query.setParameter("id" , admin.getId());
+        query.setParameter("username" , admin.getUsername());
+        query.setParameter("password" , admin.getPassword());
+        query.setParameter("adminId" , admin.getId());
+        int row = query.executeUpdate();
+
+        transaction.commit();
+        session.close();
+        return row > 0;
     }
 
     @Override
