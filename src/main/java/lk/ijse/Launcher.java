@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Launcher extends Application {
      BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BRANCH);
-     static int increment = 0;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,32 +23,22 @@ public class Launcher extends Application {
     private void currentBranches() {
         String branchIdNumber = "001";
         String branchName = "Beruwala";
-        List<BranchDTO> branches = branchBO.getAllBranches();
-        for (BranchDTO branchDTO : branches){
 
-         String idNumber = branchDTO.getBranchIdNumber();
+              try {
+                   var branch = new BranchDTO(0, branchIdNumber, branchName);
+                   boolean isSaved = branchBO.saveBranches(branch);
 
-         if (!idNumber.equals("001")) {
-             try {
-                 var branch = new BranchDTO(0, branchIdNumber, branchName);
-                 boolean isSaved = branchBO.saveBranches(branch);
-
-             } catch (Exception e) {
-                 new Alert(Alert.AlertType.ERROR, "not saved branches");
-             }
-         }
-        }
+              } catch (Exception e) {
+                   new Alert(Alert.AlertType.ERROR, "not saved branches");
+              }
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        if (increment == 0){
-            currentBranches();
-        }
+        currentBranches();
 
         Parent rootNode = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
         if (rootNode != null){
-            increment++;
             Scene scene = new Scene(rootNode);
             stage.setScene(scene);
             stage.centerOnScreen();
