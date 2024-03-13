@@ -60,6 +60,6 @@
             <Image url="@../image/closeIcon.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="658.0" layoutY="9.0" prefHeight="30.0" prefWidth="30.0" text="." textFill="#807878" />
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="658.0" layoutY="9.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#807878" />
    </children>
 </AnchorPane>
