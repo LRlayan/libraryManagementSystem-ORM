@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,17 +8,22 @@ import javafx.scene.control.Alert;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BranchBO;
 import lk.ijse.dto.BranchDTO;
+import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class AddNewBranchController {
 
+    @FXML
+    private JFXButton btnClose;
     @FXML
     private JFXTextField txtBranchId;
     @FXML
     private JFXTextField txtBranchName;
 
     BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BRANCH);
+    PageControl pageControl = new PageControl();
 
     @FXML
     void addBranchOnAction(ActionEvent event) {
@@ -40,5 +46,10 @@ public class AddNewBranchController {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void viewBranchOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/BranchForm.fxml");
+        pageControl.closeWindow(btnClose);
     }
 }
