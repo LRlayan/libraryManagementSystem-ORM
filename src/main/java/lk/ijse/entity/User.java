@@ -28,7 +28,8 @@ public class User {
     @Column(name = "user_id , branch_id")
     private List<Books> bookList;
 
-    public User(String passwords) {
+    public User(String username, String passwords) {
+        this.name = username;
         this.passwords = passwords;
     }
 
