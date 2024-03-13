@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #040D12; -fx-border-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BranchFormController">
    <children>
-      <TableView fx:id="branchTable" layoutX="66.0" layoutY="132.0" prefHeight="225.0" prefWidth="469.0">
+      <TableView fx:id="branchTable" layoutX="34.0" layoutY="132.0" prefHeight="234.0" prefWidth="529.0">
         <columns>
-          <TableColumn fx:id="branchId" prefWidth="75.0" text="Branch_id" />
-          <TableColumn fx:id="branchName" prefWidth="174.0" text="Branch_Name" />
-            <TableColumn fx:id="branchUpdate" prefWidth="113.0" text="Update" />
-            <TableColumn fx:id="branchDelete" prefWidth="106.0" text="Delete" />
+          <TableColumn fx:id="colId" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="colBranchId" prefWidth="95.0" text="Branch Id" />
+            <TableColumn fx:id="colBranchName" prefWidth="192.0" text="Branch Name" />
+            <TableColumn fx:id="colBranchUpdate" prefWidth="88.0" text="Update" />
+            <TableColumn fx:id="colBranchDelete" prefWidth="78.0" text="Delete" />
         </columns>
       </TableView>
       <ImageView layoutX="21.0" layoutY="23.0">
@@ -36,7 +36,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="451.0" layoutY="83.0" onAction="#addNewBranchOnAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #019104;" text="New +" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="479.0" layoutY="83.0" onAction="#addNewBranchOnAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #019104;" text="New +" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
