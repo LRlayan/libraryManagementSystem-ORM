@@ -11,9 +11,11 @@ import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BranchBO;
 import lk.ijse.dto.BranchDTO;
 
+import java.util.List;
+
 public class Launcher extends Application {
      BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BRANCH);
-
+     static int increment = 0;
     public static void main(String[] args) {
         launch(args);
     }
@@ -21,24 +23,37 @@ public class Launcher extends Application {
     private void currentBranches() {
         String branchIdNumber = "001";
         String branchName = "Beruwala";
+        List<BranchDTO> branches = branchBO.getAllBranches();
+        for (BranchDTO branchDTO : branches){
 
-        try{
-            var branch = new BranchDTO(0,branchIdNumber,branchName);
-            boolean isSaved = branchBO.saveBranches(branch);
+         String idNumber = branchDTO.getBranchIdNumber();
 
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,"not saved branches");
+         if (!idNumber.equals("001")) {
+             try {
+                 var branch = new BranchDTO(0, branchIdNumber, branchName);
+                 boolean isSaved = branchBO.saveBranches(branch);
+
+             } catch (Exception e) {
+                 new Alert(Alert.AlertType.ERROR, "not saved branches");
+             }
+         }
         }
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        currentBranches();
+        if (increment == 0){
+            currentBranches();
+        }
+
         Parent rootNode = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
-        Scene scene = new Scene(rootNode);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
+        if (rootNode != null){
+            increment++;
+            Scene scene = new Scene(rootNode);
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        }
     }
 }
