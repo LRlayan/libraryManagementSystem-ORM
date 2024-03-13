@@ -3,7 +3,6 @@ package lk.ijse.bo.custom.impl;
 import lk.ijse.bo.custom.BranchBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.BranchesDAO;
-import lk.ijse.dao.custom.impl.AdminDAOImpl;
 import lk.ijse.dto.BranchDTO;
 import lk.ijse.entity.Branches;
 
@@ -21,12 +20,13 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean updateBranches(BranchDTO entity) {
-        return false;
+       //return branchesDAO.update(new Branches(entity.getId(),entity.getBranchIdNumber(),entity.getBranchName()).getId());
+    return false;
     }
 
     @Override
-    public void deleteBranches() {
-
+    public boolean deleteBranches(long id) {
+        return branchesDAO.delete(id);
     }
 
     @Override
