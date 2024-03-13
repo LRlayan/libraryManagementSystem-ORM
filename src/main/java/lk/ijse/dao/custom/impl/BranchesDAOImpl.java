@@ -29,8 +29,8 @@ public class BranchesDAOImpl implements BranchesDAO {
     }
 
     @Override
-    public void delete() {
-
+    public boolean delete(long id) {
+        return false;
     }
 
     @Override
