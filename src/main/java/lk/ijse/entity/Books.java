@@ -18,7 +18,7 @@ public class Books {
     private String author;
     private String genre;
     private String availabilityStatus;
-    @ManyToMany(mappedBy = "bookList")
+    @ManyToMany(mappedBy = "bookList" , cascade = CascadeType.ALL)
     private List<User> userList;
 
     public Books(long id, String title, String author, String genre, String availabilityStatus) {
