@@ -91,29 +91,30 @@ public class BookFormController implements Initializable {
                 });
             }
 
+            bookTable.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection)->{
             for (int i = 0; i < obList.size(); i++) {
                 obList.get(i).getDelete().setOnAction(event -> {
                     ButtonType buttonYes = new ButtonType("Yes" , ButtonBar.ButtonData.OK_DONE);
                     ButtonType buttonNo = new ButtonType("No" , ButtonBar.ButtonData.CANCEL_CLOSE);
 
                     Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure delete Book!" , buttonYes , buttonNo).showAndWait();
-                    if (type.get().getText().equals("Yes")){
+                        if (type.get().getText().equals("Yes")){
 
-                        try{
-                            boolean isDelete = bookBO.deleteBook();
+                            try{
+                                boolean isDelete = bookBO.deleteBook(newSelection.getId());
 
-                            if (isDelete){
-                                new Alert(Alert.AlertType.INFORMATION,"Delete Successfully").show();
-                            }else {
-                                new Alert(Alert.AlertType.ERROR,"Please Try again later!").show();
+                                if (isDelete){
+                                     new Alert(Alert.AlertType.INFORMATION,"Delete Successfully").show();
+                                }else {
+                                     new Alert(Alert.AlertType.ERROR,"Please Try again later!").show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
                             }
-                        }catch (Exception e){
-                            e.printStackTrace();
                         }
-                    }
-
-                });
-            }
+                    });
+                }
+            });
         }catch (Exception e){
             e.printStackTrace();
         }
