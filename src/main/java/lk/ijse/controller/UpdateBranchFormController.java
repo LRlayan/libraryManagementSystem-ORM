@@ -33,7 +33,7 @@ public class UpdateBranchFormController {
     PageControl pageControl = new PageControl();
     @FXML
     void branchUpdateOnAction(ActionEvent event) {
-        long id = Long.parseLong(txtBranchId.getText());
+        int id = Integer.parseInt(txtBranchId.getText());
         String name = txtBranchName.getText();
         String branchNumber = txtBranchNumber.getText();
 
@@ -63,6 +63,11 @@ public class UpdateBranchFormController {
     @FXML
     void viewBranchOnAction(ActionEvent event) throws IOException {
         pageControl.popUpWindow("/view/BranchForm.fxml");
+        pageControl.closeWindow(btnClose);
+    }
+
+    @FXML
+    void closeWindowOnAction(ActionEvent event) {
         pageControl.closeWindow(btnClose);
     }
 }
