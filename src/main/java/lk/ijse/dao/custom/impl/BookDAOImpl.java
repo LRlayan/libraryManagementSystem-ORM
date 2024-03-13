@@ -44,13 +44,22 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public void delete() {
+    public boolean delete(long id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
 
+        Query query = session.createQuery("DELETE FROM Books b WHERE b.id = :id");
+        query.setParameter("id",id);
+
+        int row = query.executeUpdate();
+
+        transaction.commit();
+        session.close();
+        return row > 0;
     }
 
     @Override
     public List<Books> getAll() {
-
         Session session = FactoryConfiguration.getInstance().getSession();
         return session.createQuery("FROM Books ").list();
     }
