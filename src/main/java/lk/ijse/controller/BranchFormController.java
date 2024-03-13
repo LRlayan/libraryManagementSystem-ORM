@@ -7,6 +7,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
+
 public class BranchFormController {
     @FXML
     private TableView<?> branchTable;
@@ -29,12 +31,19 @@ public class BranchFormController {
     PageControl pageControl = new PageControl();
 
     @FXML
-    void addNewBranchOnAction(ActionEvent event) {
-
+    void addNewBranchOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/addNewBranch.fxml");
+        pageControl.closeWindow(btnClose);
     }
 
     @FXML
     void closeOnAction(ActionEvent event) {
+        pageControl.closeWindow(btnClose);
+    }
+
+    @FXML
+    void viewBranchOnAction(ActionEvent event) throws IOException {
+        pageControl.popUpWindow("/view/BranchForm.fxml");
         pageControl.closeWindow(btnClose);
     }
 }
