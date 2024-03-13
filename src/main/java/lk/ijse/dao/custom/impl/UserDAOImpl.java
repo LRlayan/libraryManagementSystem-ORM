@@ -1,5 +1,6 @@
 package lk.ijse.dao.custom.impl;
 
+import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
 import lk.ijse.entity.Branches;
@@ -38,11 +39,16 @@ public class UserDAOImpl implements UserDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        //session.createQuery()
+        Query query = session.createQuery("UPDATE User u SET u.id = :id , u.name = :username , u.passwords = :password WHERE u.id = :userId");
+        query.setParameter("id" , user.getId());
+        query.setParameter("username" , user.getName());
+        query.setParameter("password" , user.getPasswords());
+        query.setParameter("userId" , user.getId());
+        int row = query.executeUpdate();
 
         transaction.commit();
         session.close();
-        return false;
+        return row > 0;
     }
 
     @Override
