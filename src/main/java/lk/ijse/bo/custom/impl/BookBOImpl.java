@@ -18,9 +18,8 @@ public class BookBOImpl implements BookBO {
     }
 
     @Override
-    public boolean deleteBook() {
-
-        return false;
+    public boolean deleteBook(long id) {
+        return bookDAO.delete(id);
     }
 
     @Override
