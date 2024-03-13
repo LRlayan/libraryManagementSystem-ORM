@@ -8,6 +8,6 @@ import java.util.List;
 public interface BranchBO extends SuperBO {
     boolean saveBranches(BranchDTO entity);
     boolean updateBranches(BranchDTO entity);
-    void deleteBranches();
+    boolean deleteBranches(long id);
     List<BranchDTO> getAllBranches();
 }
