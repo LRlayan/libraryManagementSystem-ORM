@@ -5,6 +5,6 @@ import java.util.List;
 public interface CrudDAO<T> extends SuperDAO {
    boolean save(T entity);
    boolean update(T entity);
-   void delete();
+   boolean delete(long id);
    List<T> getAll();
 }
