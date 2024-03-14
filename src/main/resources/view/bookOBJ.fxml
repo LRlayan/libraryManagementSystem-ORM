@@ -56,7 +56,7 @@
             <Font size="32.0" />
          </font>
          <graphic>
-            <JFXButton fx:id="btnQuickAdd" buttonType="RAISED" prefHeight="48.0" prefWidth="134.0" style="-fx-background-color: #0045b5; -fx-background-radius: 30;" text="Quick Add" textFill="WHITE">
+            <JFXButton fx:id="btnQuickAdd" buttonType="RAISED" onAction="#btnQuickAddOnAction" prefHeight="48.0" prefWidth="134.0" style="-fx-background-color: #0045b5; -fx-background-radius: 30;" text="Quick Add" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
