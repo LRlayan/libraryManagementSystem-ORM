@@ -49,6 +49,7 @@ public class UserFormController implements Initializable {
         int colomn = 0;
         int row = 0;
         for (int i = 0; i < allBooks.size(); i++) {
+            BookOBJController.index = i;
             try {
                 Parent parent = FXMLLoader.load(getClass().getResource("/view/bookOBJ.fxml"));
                 gridPane.add(parent, colomn, row++);
