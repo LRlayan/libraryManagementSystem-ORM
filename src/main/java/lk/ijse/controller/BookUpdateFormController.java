@@ -72,7 +72,7 @@ public class BookUpdateFormController implements Initializable {
         boolean bookGenre = Pattern.matches("[a-zA-Z0-9]+",genre);
         boolean status = Pattern.matches("[a-zA-Z0-9]+",availableStatus);
 
-        var bookDTO = new BookDTO(bookId,bookName,author,genre,availableStatus);
+        var bookDTO = new BookDTO(bookId,bookName,author,genre,availableStatus,null);
         if ( !txtBookId.getText().isEmpty() && name && !txtBookName.getText().isEmpty() && authorName && !txtAuthor.getText().isEmpty() && !txtGenre.getText().isEmpty() && bookGenre && status && !txtAvailabilityStatus.getText().isEmpty()){
             try{
                 boolean isUpdate = bookBO.updateBook(bookDTO);
