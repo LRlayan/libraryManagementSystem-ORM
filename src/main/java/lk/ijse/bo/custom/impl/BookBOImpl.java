@@ -14,7 +14,7 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public boolean saveBook(BookDTO book) {
-       return bookDAO.save(new Books(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus()));
+       return bookDAO.save(new Books(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus(), book.getImage()));
     }
 
     @Override
@@ -28,13 +28,13 @@ public class BookBOImpl implements BookBO {
         List<BookDTO> bookDTOS = new ArrayList<>();
 
         for (Books book : bookList){
-            bookDTOS.add(new BookDTO(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus()));
+            bookDTOS.add(new BookDTO(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus(),book.getImage()));
         }
         return bookDTOS;
     }
 
     @Override
     public boolean updateBook(BookDTO bookDTO) {
-        return bookDAO.update(new Books(bookDTO.getId(),bookDTO.getTitle(),bookDTO.getAuthor(),bookDTO.getGenre(),bookDTO.getAvailabilityStatus()));
+        return bookDAO.update(new Books(bookDTO.getId(),bookDTO.getTitle(),bookDTO.getAuthor(),bookDTO.getGenre(),bookDTO.getAvailabilityStatus(),bookDTO.getImage()));
     }
 }
