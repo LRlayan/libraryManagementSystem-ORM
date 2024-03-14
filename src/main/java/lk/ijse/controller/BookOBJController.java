@@ -83,6 +83,7 @@ public class BookOBJController implements Initializable {
         try {
             Optional<BookDTO> first = books.stream().filter(books1 -> books1.getTitle() == lblBookTitle.getText()).findFirst();
             QuickAddFormController.title = first.get().getTitle();
+            QuickAddFormController.bookId = first.get().getId();
         }catch (Exception e){
             e.printStackTrace();
         }

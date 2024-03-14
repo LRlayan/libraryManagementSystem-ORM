@@ -7,13 +7,19 @@ import com.jfoenix.controls.JFXTimePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.TransactionBO;
+import lk.ijse.dto.TransactionDTO;
 import lk.ijse.pageController.PageControl;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class QuickAddFormController implements Initializable {
+
     @FXML
     private JFXButton btnClose;
 
@@ -33,7 +39,10 @@ public class QuickAddFormController implements Initializable {
     private JFXTimePicker txtTime;
 
     PageControl pageControl = new PageControl();
+    TransactionBO transactionBO = (TransactionBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.TRANSACTION);
     static String title;
+    public static long bookId;
+
     @FXML
     void closeWindowOnAction(ActionEvent event) throws IOException {
         pageControl.closeWindow(btnClose);
@@ -47,7 +56,20 @@ public class QuickAddFormController implements Initializable {
         String name = txtName.getText();
         String title = txtTitle.getText();
 
+        boolean nameUser = Pattern.matches("[a-zA-Z]+",name);
+        boolean bookTitle = Pattern.matches("[a-zA-Z0-9]+",title);
 
+        var transactionDTO = new TransactionDTO(0,name,title,startDate,returnDate,time);
+        if (nameUser && bookTitle){
+            boolean isSaved = transactionBO.saveTransaction(transactionDTO);
+            if (isSaved){
+                new Alert(Alert.AlertType.INFORMATION,"Quick Add Book Successfully").show();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"please try Again later").show();
+            }
+        }else {
+
+        }
     }
 
     private void setBookTitle() {
