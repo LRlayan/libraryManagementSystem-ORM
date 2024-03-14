@@ -1,6 +1,5 @@
 package lk.ijse.bo.custom.impl;
 
-import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.UserBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.BookDAO;
@@ -24,7 +23,7 @@ public class UserFormBOImpl implements UserBO {
         List<BookDTO> bookDTOS = new ArrayList<>();
 
         for (Books book : bookList){
-            bookDTOS.add(new BookDTO(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus()));
+            bookDTOS.add(new BookDTO(book.getId(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getAvailabilityStatus(),book.getImage()));
         }
         return bookDTOS;
     }
