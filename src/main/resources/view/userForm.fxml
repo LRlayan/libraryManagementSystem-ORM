@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="710.0" prefWidth="1358.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserFormController">
@@ -62,16 +61,14 @@
          </font>
       </Label>
       <JFXButton buttonType="RAISED" layoutX="1007.0" layoutY="25.0" onAction="#userHistoryOnAction" prefHeight="25.0" prefWidth="90.0" text="." />
-      <ScrollPane layoutX="90.0" layoutY="157.0" prefHeight="486.0" prefWidth="754.0">
+      <ScrollPane layoutX="132.0" layoutY="157.0" prefHeight="486.0" prefWidth="1108.0">
          <content>
-            <GridPane fx:id="gridPane" prefHeight="2.0" prefWidth="866.0">
+            <GridPane fx:id="gridPane" prefHeight="12.0" prefWidth="0.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
             </GridPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="anchorpane" layoutX="865.0" layoutY="124.0" prefHeight="568.0" prefWidth="408.0" />
-      <Line endX="236.0" endY="554.0" layoutX="619.0" layoutY="124.0" startX="236.0" startY="16.0" stroke="#008622" />
    </children>
 </AnchorPane>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="433.0" prefWidth="636.0" style="-fx-background-color: #040D12; -fx-border-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddNewBookController">
+<AnchorPane prefHeight="478.0" prefWidth="636.0" style="-fx-background-color: #040D12; -fx-border-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddNewBookController">
    <children>
       <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="23.0">
          <image>
@@ -48,11 +48,17 @@
             <Image url="@../image/addBookImg.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="254.0" layoutY="377.0" onAction="#saveBookOnAction" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #019104;" text="Save Book" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="254.0" layoutY="434.0" onAction="#saveBookOnAction" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #019104;" text="Save Book" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="169.0" layoutY="377.0" onAction="#viewBookOnAction" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #019104;" text="View Books" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="169.0" layoutY="434.0" onAction="#viewBookOnAction" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #019104;" text="View Books" textFill="WHITE" />
+      <Label layoutX="55.0" layoutY="378.0" text="Add Book Image" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="165.0" layoutY="375.0" onAction="#btnChooseImage" style="-fx-background-color: #0045b5;" text="Choose Image" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
