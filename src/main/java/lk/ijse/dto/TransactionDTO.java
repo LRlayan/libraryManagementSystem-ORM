@@ -1,7 +1,5 @@
 package lk.ijse.dto;
 
-import lk.ijse.entity.Books;
-import lk.ijse.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

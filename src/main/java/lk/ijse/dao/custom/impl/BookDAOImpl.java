@@ -15,7 +15,7 @@ public class BookDAOImpl implements BookDAO {
     public boolean save(Books books) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-
+        TransactionDAOImpl.books = books;
         session.save(books);
 
         transaction.commit();

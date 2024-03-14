@@ -19,8 +19,9 @@ public class Books {
     private String genre;
     private String availabilityStatus;
     private String image;
-    @ManyToMany(mappedBy = "bookList" , cascade = CascadeType.ALL)
-    private List<User> userList;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "bookList")
+    private List<Transaction> transactions;
+
 
     public Books(long id, String title, String author, String genre, String availabilityStatus,String image) {
         this.id = id;

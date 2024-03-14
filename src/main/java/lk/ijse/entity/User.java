@@ -23,10 +23,8 @@ public class User {
     @JoinColumn(name = "branch_id")
     private Branches branches;
 
-    @ManyToMany
-    @JoinTable(name = "Transaction")
-    @Column(name = "user_id , branch_id")
-    private List<Books> bookList;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "userList")
+    private List<Transaction> transactions;
 
     public User(String username, String passwords) {
         this.name = username;

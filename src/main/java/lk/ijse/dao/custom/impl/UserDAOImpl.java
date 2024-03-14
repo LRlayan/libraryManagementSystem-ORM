@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
     public boolean save(User user) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-
+        TransactionDAOImpl.user = user;
         List<User> userList = new ArrayList<>();
 
         user.setBranches(branches);
