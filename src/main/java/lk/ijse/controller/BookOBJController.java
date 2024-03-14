@@ -1,4 +1,68 @@
 package lk.ijse.controller;
 
-public class BookOBJController {
+import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.BookOBJBO;
+import lk.ijse.dto.BookDTO;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class BookOBJController implements Initializable {
+    @FXML
+    private ImageView imageView;
+    public static int index;
+
+    @FXML
+    private Label lblBookTitle;
+
+    @FXML
+    private Label lblAuthor;
+
+    @FXML
+    private Label lblGenre;
+
+    @FXML
+    private Label lblStatus;
+
+    @FXML
+    private JFXButton btnQuickAdd;
+
+    BookOBJBO bookOBJBO = (BookOBJBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BOOK_OBJ);
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnQuickAdd.setVisible(false);
+        setDataInGridPane();
+    }
+
+    private void setDataInGridPane() {
+        List<BookDTO> books = bookOBJBO.getAllBooks();
+
+        Image image = new Image(books.get(index).getImage());
+        ImageView imageView1 = new ImageView(image);
+
+        imageView.setImage(imageView1.getImage());
+        lblBookTitle.setText(books.get(index).getTitle());
+        lblAuthor.setText(books.get(index).getAuthor());
+        lblGenre.setText(books.get(index).getGenre());
+        lblStatus.setText(books.get(index).getAvailabilityStatus());
+    }
+
+    @FXML
+    void quickAddLabelMouseEnterOnAction(MouseEvent event) {
+        btnQuickAdd.setVisible(true);
+    }
+
+    @FXML
+    void quickAddLabelMouseExitOnAction(MouseEvent event) {
+        btnQuickAdd.setVisible(false);
+    }
 }
