@@ -18,14 +18,16 @@ public class Books {
     private String author;
     private String genre;
     private String availabilityStatus;
+    private String image;
     @ManyToMany(mappedBy = "bookList" , cascade = CascadeType.ALL)
     private List<User> userList;
 
-    public Books(long id, String title, String author, String genre, String availabilityStatus) {
+    public Books(long id, String title, String author, String genre, String availabilityStatus,String image) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.availabilityStatus = availabilityStatus;
+        this.image = image;
     }
 }
