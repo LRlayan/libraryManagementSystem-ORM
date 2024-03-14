@@ -1,6 +1,7 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -10,9 +11,13 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BookOBJBO;
 import lk.ijse.dto.BookDTO;
+import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BookOBJController implements Initializable {
@@ -36,6 +41,8 @@ public class BookOBJController implements Initializable {
     private JFXButton btnQuickAdd;
 
     BookOBJBO bookOBJBO = (BookOBJBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.BOOK_OBJ);
+    PageControl pageControl = new PageControl();
+    List<BookDTO> books = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,7 +51,7 @@ public class BookOBJController implements Initializable {
     }
 
     private void setDataInGridPane() {
-        List<BookDTO> books = bookOBJBO.getAllBooks();
+        books = bookOBJBO.getAllBooks();
 
         Image image = new Image(books.get(index).getImage());
         ImageView imageView1 = new ImageView(image);
@@ -64,5 +71,20 @@ public class BookOBJController implements Initializable {
     @FXML
     void quickAddLabelMouseExitOnAction(MouseEvent event) {
         btnQuickAdd.setVisible(false);
+    }
+
+    @FXML
+    void btnQuickAddOnAction(ActionEvent event) throws IOException {
+        getClickBookDetails();
+        pageControl.popUpWindow("/view/quickAddForm.fxml");
+    }
+
+    private void getClickBookDetails() {
+        try {
+            Optional<BookDTO> first = books.stream().filter(books1 -> books1.getTitle() == lblBookTitle.getText()).findFirst();
+            QuickAddFormController.title = first.get().getTitle();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
