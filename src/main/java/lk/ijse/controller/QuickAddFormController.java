@@ -57,11 +57,11 @@ public class QuickAddFormController implements Initializable {
         UserDTO userDTO = null;
         BookDTO bookDTO = null;
 
-        String startDate = String.valueOf(txtStartDate.getValue());
-        String time = String.valueOf(txtTime.getValue());
-        String returnDate = String.valueOf(txtReturnDate.getValue());
         String name = txtName.getText();
         String title = txtTitle.getText();
+        String time = String.valueOf(txtTime.getValue());
+        String startDate = String.valueOf(txtStartDate.getValue());
+        String returnDate = String.valueOf(txtReturnDate.getValue());
 
         for(UserDTO users : transactionBO.getAllUser()){
              userDTO = new UserDTO(users.getId(),users.getName(),users.getEmail(),users.getBranch(),users.getPassword());
@@ -74,7 +74,7 @@ public class QuickAddFormController implements Initializable {
         boolean nameUser = Pattern.matches("[a-zA-Z]+",name);
         boolean bookTitle = Pattern.matches("[a-zA-Z0-9]+",title);
 
-        var transactionDTO = new TransactionDTO(0,name,title,startDate,returnDate,time);
+        var transactionDTO = new TransactionDTO(0,name,title,time,startDate,returnDate);
         if (nameUser && bookTitle){
             boolean isSaved = transactionBO.saveTransaction(transactionDTO,userDTO,bookDTO);
             if (isSaved){

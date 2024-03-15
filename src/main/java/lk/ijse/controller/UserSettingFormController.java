@@ -13,6 +13,7 @@ import lk.ijse.pageController.PageControl;
 import org.apache.commons.codec.binary.Base64;
 
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Pattern;
 
 public class UserSettingFormController {
     @FXML
@@ -67,24 +68,34 @@ public class UserSettingFormController {
         String newPassword = txtNewPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
+        boolean newPass = Pattern.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}",newPassword);
+
         for (UserSettingDTO user : userSettingBO.getAllUser()){
             String password = pageControl.encryptPassword(currentPassword);
 
-            if (user.getPassword().equals(password)){
-                lblCurrentPassword.setText("");
-                if (confirmPassword.equals(newPassword)){
-                    lblConfirmPassword.setText("");
-                    boolean isUpdated = userSettingBO.updatePassword(confirmPassword,user.getId());
-                    if (isUpdated){
-                        new Alert(Alert.AlertType.INFORMATION,"change password successfully").show();
-                    }else {
-                        new Alert(Alert.AlertType.INFORMATION,"please try again later").show();
+                if (user.getPassword().equals(password)) {
+                    lblCurrentPassword.setText("");
+
+                    if (!txtConfirmPassword.getText().isEmpty() && newPass) {
+                        if (confirmPassword.equals(newPassword)) {
+                            lblConfirmPassword.setText("");
+
+                            String encryptPassword = pageControl.encryptPassword(confirmPassword);
+                            boolean isUpdated = userSettingBO.updatePassword(encryptPassword, user.getId());
+
+                            if (isUpdated) {
+                                new Alert(Alert.AlertType.INFORMATION, "change password successfully").show();
+                            } else {
+                                new Alert(Alert.AlertType.INFORMATION, "please try again later").show();
+                            }
+                        } else {
+                            lblConfirmPassword.setText("please re-enter your new password");
+                        }
+                    } else {
+                    lblCurrentPassword.setText("");
                     }
-                }else {
-                    lblConfirmPassword.setText("please re-enter your new password");
-                }
-            }else {
-                lblCurrentPassword.setText("invalid password");
+                 }else {
+                lblConfirmPassword.setText("please confirm password");
             }
         }
     }
@@ -95,7 +106,8 @@ public class UserSettingFormController {
         String newUsername = txtNewUsername.getText();
         String confirmUsername = txtConfirmUsername.getText();
 
-        for (UserSettingDTO user : userSettingBO.getAllUser()){
+        for (UserSettingDTO user : userSettingBO.getAllUser()) {
+            if (!txtConfirmPassword.getText().isEmpty()) {
                 if (user.getName().equals(currentUsername)) {
                     lblCurrentUsername.setText("");
                     if (confirmUsername.equals(newUsername)) {
@@ -107,7 +119,7 @@ public class UserSettingFormController {
                             } else {
                                 new Alert(Alert.AlertType.INFORMATION, "please try again later").show();
                             }
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     } else {
@@ -116,6 +128,9 @@ public class UserSettingFormController {
                 } else {
                     lblCurrentUsername.setText("invalid username");
                 }
+            }else {
+                lblConfirmPassword.setText("please confirm username");
             }
+        }
     }
 }
