@@ -20,19 +20,29 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public boolean save(Admin admin) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = null;
 
-        List<Admin> adminList = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            List<Admin> adminList = new ArrayList<>();
 
-        admin.setBranches(branches);
-        adminList.add(admin);
-        branches.setAdminList(adminList);
+            admin.setBranches(branches);
+            adminList.add(admin);
+            branches.setAdminList(adminList);
 
-        session.save(admin);
+            session.save(admin);
 
-        transaction.commit();
-        session.close();
-        return true;
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override

@@ -59,7 +59,7 @@ public class AdminFormController implements Initializable {
 
     @FXML
     public void historyOnAction(ActionEvent event) throws IOException {
-        pageControl.popUpWindow("/view/historyForm.fxml");
+        pageControl.popUpWindow("/view/adminHistoryForm.fxml");
     }
 
     @FXML

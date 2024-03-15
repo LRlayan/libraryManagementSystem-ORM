@@ -16,4 +16,13 @@ public class HistoryTM {
     private String startDate;
     private String returnDate;
     private JFXButton returnBook;
+
+    public HistoryTM(long id, String bookTitle, String nameOfUser, String time, String startDate, String returnDate) {
+        this.id = id;
+        this.bookTitle = bookTitle;
+        this.nameOfUser = nameOfUser;
+        this.time = time;
+        this.startDate = startDate;
+        this.returnDate = returnDate;
+    }
 }
