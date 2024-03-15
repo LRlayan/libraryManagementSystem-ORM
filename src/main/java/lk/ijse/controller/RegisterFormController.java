@@ -89,7 +89,6 @@ public class RegisterFormController implements Initializable {
                  }else {
                      new Alert(Alert.AlertType.ERROR,"Try again!").show();
                  }
-
             }catch (Exception e){
                e.printStackTrace();
            }

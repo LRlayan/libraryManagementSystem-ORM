@@ -26,7 +26,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Line endX="168.0" layoutX="187.0" layoutY="44.0" startX="-55.0" stroke="#46a451" />
+      <Line endX="180.0" endY="-7.62939453125E-6" layoutX="187.0" layoutY="44.0" startX="-55.0" stroke="#46a451" />
       <Label layoutX="40.0" layoutY="71.0" text="Change Username" textFill="WHITE">
          <font>
             <Font size="16.0" />
@@ -68,12 +68,12 @@
       <Label fx:id="lblCurrentPassword" layoutX="57.0" layoutY="418.0" prefHeight="17.0" prefWidth="285.0" textFill="RED" />
       <Label fx:id="lblNewPassword" layoutX="57.0" layoutY="478.0" prefHeight="17.0" prefWidth="285.0" textFill="RED" />
       <Label fx:id="lblConfirmPassword" layoutX="57.0" layoutY="538.0" prefHeight="17.0" prefWidth="285.0" textFill="RED" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="326.0" layoutY="8.0">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="339.0" layoutY="8.0">
          <image>
             <Image url="@../image/closeIcon.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="326.0" layoutY="8.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#685858" />
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="339.0" layoutY="8.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#685858" />
       <JFXButton buttonType="RAISED" layoutX="225.0" layoutY="291.0" onAction="#saveChangeUsernameOnAction" style="-fx-background-color: #019104;" text="Change Username" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />

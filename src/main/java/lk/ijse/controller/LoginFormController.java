@@ -115,21 +115,25 @@ public class LoginFormController implements Initializable {
         String password = txtPassword.getText();
         String passwordEncrypt = pageControl.encryptPassword(password);
         for (UserDTO userDTO : userBO.getAllUsers()){
-            if (userDTO.getPassword().equals(passwordEncrypt)){
-                lblPassword.setText("");
-            }else {
-                lblPassword.setText("Invalid Password");
+            for (AdminDTO adminDTO : userBO.getAllAdmin()){
+                if (userDTO.getPassword().equals(passwordEncrypt) || adminDTO.getPassword().equals(password)){
+                    lblPassword.setText("");
+                }else {
+                    lblPassword.setText("Invalid Password");
+                }
             }
         }
     }
 
     @FXML
     void txtUsernameOnAction(KeyEvent event) {
-        for (UserDTO userDTO : userBO.getAllUsers()){
-            if (userDTO.getName().equals(txtUsername.getText())){
-                lblUsername.setText("");
-            }else {
-                lblUsername.setText("Invalid Username");
+        for (UserDTO userDTO : userBO.getAllUsers()) {
+            for (AdminDTO adminDTO : userBO.getAllAdmin()) {
+                if (userDTO.getName().equals(txtUsername.getText()) || adminDTO.getUsername().equals(txtUsername.getText())) {
+                    lblUsername.setText("");
+                } else {
+                    lblUsername.setText("Invalid Username");
+                }
             }
         }
     }

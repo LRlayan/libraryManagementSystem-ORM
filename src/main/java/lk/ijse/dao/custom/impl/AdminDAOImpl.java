@@ -67,4 +67,54 @@ public class AdminDAOImpl implements AdminDAO {
        Session session = FactoryConfiguration.getInstance().getSession();
        return session.createQuery("from Admin").list();
     }
+
+    @Override
+    public boolean updateUsername(String confirmUsername, long id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = null;
+
+        try{
+            transaction = session.beginTransaction();
+            session.createQuery("UPDATE Admin a SET a.username = :confirmUsername WHERE a.id = :adminId")
+                    .setParameter("confirmUsername",confirmUsername)
+                    .setParameter("adminId" , id)
+                    .executeUpdate();
+
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean updatePassword(String confirmPassword, long id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = null;
+
+        try{
+            transaction = session.beginTransaction();
+            session.createQuery("UPDATE Admin a SET a.password = :confirmPassword WHERE a.id = :adminId")
+                    .setParameter("confirmPassword",confirmPassword)
+                    .setParameter("adminId" , id)
+                    .executeUpdate();
+
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
+        }
+    }
 }
