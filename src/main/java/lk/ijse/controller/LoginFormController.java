@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.AdminBO;
@@ -108,4 +109,29 @@ public class LoginFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"Not saved admin");
         }
     }
+
+    @FXML
+    void txtPasswordOnAction(KeyEvent event) {
+        String password = txtPassword.getText();
+        String passwordEncrypt = pageControl.encryptPassword(password);
+        for (UserDTO userDTO : userBO.getAllUsers()){
+            if (userDTO.getPassword().equals(passwordEncrypt)){
+                lblPassword.setText("");
+            }else {
+                lblPassword.setText("Invalid Password");
+            }
+        }
+    }
+
+    @FXML
+    void txtUsernameOnAction(KeyEvent event) {
+        for (UserDTO userDTO : userBO.getAllUsers()){
+            if (userDTO.getName().equals(txtUsername.getText())){
+                lblUsername.setText("");
+            }else {
+                lblUsername.setText("Invalid Username");
+            }
+        }
+    }
+
 }
