@@ -65,7 +65,13 @@ public class BookOBJController implements Initializable {
 
     @FXML
     void quickAddLabelMouseEnterOnAction(MouseEvent event) {
-        btnQuickAdd.setVisible(true);
+        for (BookDTO bookDTO : bookOBJBO.getAllBooks()){
+            if (bookDTO.getAvailabilityStatus().equals("Not Available")){
+                btnQuickAdd.setVisible(false);
+            }else {
+                btnQuickAdd.setVisible(true);
+            }
+        }
     }
 
     @FXML
