@@ -19,19 +19,30 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean save(User user) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        List<User> userList = new ArrayList<>();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            List<User> userList = new ArrayList<>();
 
-        user.setBranches(branches);
-        branches.setUserList(userList);
-        user.setBranchName(branches.getBranchName());
+            user.setBranches(branches);
+            branches.setUserList(userList);
+            user.setBranchName(branches.getBranchName());
 
-        userList.add(user);
-        session.save(user);
+            userList.add(user);
+            session.save(user);
 
-        transaction.commit();
-        session.close();
-        return true;
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
