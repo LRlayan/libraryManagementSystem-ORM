@@ -15,12 +15,22 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public boolean save(Books books) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = null;
+        try{
+        transaction = session.beginTransaction();
         session.save(books);
 
         transaction.commit();
-        session.close();
         return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
