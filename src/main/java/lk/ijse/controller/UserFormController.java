@@ -63,7 +63,7 @@ public class UserFormController implements Initializable {
 
     @FXML
     void settingOnAction(ActionEvent event) throws IOException {
-        pageControl.popUpWindow("/view/settingForm.fxml");
+        pageControl.popUpWindow("/view/userSettingForm.fxml");
     }
 
     @FXML
