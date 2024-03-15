@@ -39,7 +39,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtUsername" layoutX="267.0" layoutY="334.0" prefHeight="25.0" prefWidth="243.0" promptText="enter username" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#006e0c" />
+            <JFXTextField fx:id="txtUsername" layoutX="267.0" layoutY="334.0" onKeyReleased="#txtUsernameOnAction" prefHeight="25.0" prefWidth="243.0" promptText="enter username" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#006e0c" />
             <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="342.0" layoutY="485.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #019104;" text="Login" textFill="WHITE" />
             <Label layoutX="100.0" layoutY="16.0" text="BOOK WORM LIBRARY" textFill="#cdbebe">
                <font>
@@ -61,7 +61,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXPasswordField fx:id="txtPassword" layoutX="267.0" layoutY="430.0" prefHeight="25.0" prefWidth="243.0" promptText="enter password" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#00721e">
+            <JFXPasswordField fx:id="txtPassword" layoutX="267.0" layoutY="430.0" onKeyReleased="#txtPasswordOnAction" prefHeight="25.0" prefWidth="243.0" promptText="enter password" styleClass="font" stylesheets="@../styleSheet/styleSheet.css" unFocusColor="#00721e">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
