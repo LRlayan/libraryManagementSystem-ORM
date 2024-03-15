@@ -15,7 +15,7 @@ import lk.ijse.pageController.PageControl;
 
 import java.util.List;
 
-public class SettingFormController {
+public class adminSettingFormController {
     @FXML
     private JFXTextField txtCurrentUsername;
 
@@ -58,6 +58,25 @@ public class SettingFormController {
     PageControl pageControl = new PageControl();
 
     SettingFormBO settingFormBO = (SettingFormBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.SETTING);
+
+
+    @FXML
+    void saveChangePasswordOnAction(ActionEvent event) {
+        String currentUsername = txtCurrentUsername.getText();
+        String newUsername = txtNewUsername.getText();
+        String confirmUsername = txtConfirmUsername.getText();
+    }
+
+    @FXML
+    void saveChangeUsernameOnAction(ActionEvent event) {
+        String currentPassword = txtCurrentPassword.getText();
+        String newPassword = txtNewPassword.getText();
+        String confirmPassword = txtConfirmPassword.getText();
+
+        List<AdminDTO> adminDTOList = settingFormBO.getAllAdmin();
+
+    }
+
 
     @FXML
     void saveChangesOnAction(ActionEvent event) {
