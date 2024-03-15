@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BranchBO;
 import lk.ijse.dto.BranchDTO;
@@ -61,6 +62,11 @@ public class BranchFormController implements Initializable {
             branchTable.setItems(obList);
 
             for (int i = 0; i < obList.size(); i++){
+                obList.get(i).getUpdate().setTextFill(Color.WHITE);
+                obList.get(i).getDelete().setTextFill(Color.WHITE);
+                obList.get(i).getUpdate().setStyle("-fx-background-color: #00c220");
+                obList.get(i).getDelete().setStyle("-fx-background-color: #ff003c");
+
                 obList.get(i).getUpdate().setOnAction(event -> {
                     try{
                         pageControl.popUpWindow("/view/updateBranchForm.fxml");
