@@ -21,6 +21,8 @@ public class TransactionDAOImpl implements TransactionDAO {
 
     @Override
     public boolean saveSeveralObject(Transaction transaction, User user , Books books) {
+        String status = "Not Available";
+
         Session session = FactoryConfiguration.getInstance().getSession();
         org.hibernate.Transaction transaction1 = null;
         try {
@@ -36,6 +38,12 @@ public class TransactionDAOImpl implements TransactionDAO {
 
             transactions.add(transaction);
             session.save(transaction);
+
+                    System.out.println("awaaaaa");
+                    session.createQuery("UPDATE Books b SET b.availabilityStatus = :status WHERE b.id = :bookId")
+                        .setParameter("status" , status).setParameter("bookId" , books.getId())
+                        .executeUpdate();
+
 
             transaction1.commit();
             return true;
