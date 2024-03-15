@@ -66,4 +66,53 @@ public class UserDAOImpl implements UserDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         return session.createQuery("FROM User ").list();
     }
+
+    @Override
+    public boolean updateUsername(String confirmUsername, long id) {
+       Session session = FactoryConfiguration.getInstance().getSession();
+       Transaction transaction = null;
+
+       try{
+           transaction = session.beginTransaction();
+           session.createQuery("UPDATE User u SET u.name = :confirmUsername WHERE u.id = :userId")
+                   .setParameter("confirmUsername",confirmUsername)
+                   .setParameter("userId" , id)
+                   .executeUpdate();
+
+           transaction.commit();
+           return true;
+       }catch (Exception e){
+           if (transaction != null){
+               transaction.rollback();
+           }
+           e.printStackTrace();
+           return false;
+       }finally {
+           session.close();
+       }
+    }
+
+    @Override
+    public boolean updatePassword(String confirmPassword, long id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = null;
+
+        try{
+            transaction = session.beginTransaction();
+            session.createQuery("UPDATE User u SET u.passwords = :confirmPassword WHERE u.id = :userId")
+                    .setParameter("confirmPassword",confirmPassword)
+                    .setParameter("userId" , id)
+                    .executeUpdate();
+
+            transaction.commit();
+            return true;
+        }catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
+    }
 }
