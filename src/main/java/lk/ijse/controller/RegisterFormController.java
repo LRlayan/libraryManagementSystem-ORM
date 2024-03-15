@@ -78,7 +78,7 @@ public class RegisterFormController implements Initializable {
         pageControl.hiddenErrorMessage(lblUsername,lblEmail,lblBranch,lblPassword , name,mail,pass,branch);
 
         if (!username.isEmpty() && name && !email.isEmpty() && mail && !password.isEmpty() && pass && !branchName.isEmpty() && branch){
-            String encryptPassword = encryptPassword(password);
+            String encryptPassword = pageControl.encryptPassword(password);
             var registerDTO = new RegisterDTO(0, username, email, encryptPassword, branchName);
 
             try {
@@ -108,10 +108,6 @@ public class RegisterFormController implements Initializable {
                 lblBranch.setText("Please select available branch");
             }
         }
-    }
-
-    private String encryptPassword(String text) {
-        return new String(Base64.encodeBase64(text.getBytes(StandardCharsets.UTF_8)));
     }
 
     @Override
