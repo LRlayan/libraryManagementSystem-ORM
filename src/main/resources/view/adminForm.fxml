@@ -4,6 +4,8 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -80,5 +82,14 @@
          </font>
       </Label>
       <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="24.0" onAction="#bookOnAction" prefHeight="25.0" prefWidth="73.0" text="." />
+      <TableView fx:id="bookTable" layoutX="123.0" layoutY="192.0" prefHeight="452.0" prefWidth="1118.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="colName" prefWidth="265.0" text="Book Name" />
+            <TableColumn fx:id="colAuthor" prefWidth="249.0" text="Author" />
+            <TableColumn fx:id="colGenre" prefWidth="279.0" text="Genre" />
+            <TableColumn fx:id="colStatus" prefWidth="249.0" text="Status" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

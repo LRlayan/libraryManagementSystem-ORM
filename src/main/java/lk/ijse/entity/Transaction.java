@@ -21,10 +21,10 @@ public class Transaction {
     private String startDate;
     private String returnDate;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User userList;
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn
     private Books bookList;
 
     public Transaction(long id, String bookTitle, String nameOfUser, String time, String startDate, String returnDate) {

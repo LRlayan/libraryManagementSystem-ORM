@@ -3,6 +3,7 @@ package lk.ijse.dao.custom.impl;
 import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
+import lk.ijse.entity.Books;
 import lk.ijse.entity.Branches;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
@@ -19,7 +20,6 @@ public class UserDAOImpl implements UserDAO {
     public boolean save(User user) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        TransactionDAOImpl.user = user;
         List<User> userList = new ArrayList<>();
 
         user.setBranches(branches);
@@ -32,6 +32,11 @@ public class UserDAOImpl implements UserDAO {
         transaction.commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public boolean saveSeveralObject(lk.ijse.entity.Transaction entity, User user , Books books) {
+        return false;
     }
 
     @Override

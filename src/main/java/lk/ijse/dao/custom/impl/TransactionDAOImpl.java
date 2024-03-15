@@ -12,39 +12,43 @@ import java.util.List;
 
 public class TransactionDAOImpl implements TransactionDAO {
 
-    public static Books books;
-    public static User user;
+
 
     @Override
     public boolean save(Transaction transaction) {
-            Session session = FactoryConfiguration.getInstance().getSession();
-            org.hibernate.Transaction transaction1 = null;
-            try {
-                transaction1 = session.beginTransaction();
-
-                List<Transaction> transactions = new ArrayList<>();
-
-                transaction.setBookList(books);
-                transaction.setUserList(user);
-                transactions.add(transaction);
-                books.setTransactions(transactions);
-                user.setTransactions(transactions);
-
-                session.save(transaction);
-
-                transaction1.commit();
-                return true;
-            } catch (Exception ex) {
-                if (transaction1 != null) {
-                    transaction1.rollback();
-                }
-                ex.printStackTrace(); // or log the exception
-                return false;
-            } finally {
-                session.close();
-            }
+           return false;
         }
 
+    @Override
+    public boolean saveSeveralObject(Transaction transaction, User user , Books books) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        org.hibernate.Transaction transaction1 = null;
+        try {
+            transaction1 = session.beginTransaction();
+
+            List<Transaction> transactions = new ArrayList<>();
+
+            transaction.setUserList(user);
+            user.setTransactions(transactions);
+
+            transaction.setBookList(books);
+            books.setTransactions(transactions);
+
+            transactions.add(transaction);
+            session.save(transaction);
+
+            transaction1.commit();
+            return true;
+        } catch (Exception ex) {
+            if (transaction1 != null) {
+                transaction1.rollback();
+            }
+            ex.printStackTrace(); // or log the exception
+            return false;
+        } finally {
+            session.close();
+        }
+    }
 
     @Override
     public boolean update(Transaction transaction) {

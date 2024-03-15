@@ -4,6 +4,7 @@ import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BranchesDAO;
 import lk.ijse.entity.Admin;
+import lk.ijse.entity.Books;
 import lk.ijse.entity.Branches;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
@@ -24,6 +25,11 @@ public class BranchesDAOImpl implements BranchesDAO {
        transaction.commit();
        session.close();
        return true;
+    }
+
+    @Override
+    public boolean saveSeveralObject(lk.ijse.entity.Transaction entity, User user , Books books) {
+        return false;
     }
 
     @Override

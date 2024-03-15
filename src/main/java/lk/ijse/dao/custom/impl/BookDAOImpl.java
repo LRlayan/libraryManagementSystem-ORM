@@ -4,6 +4,7 @@ import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.entity.Books;
+import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,12 +16,16 @@ public class BookDAOImpl implements BookDAO {
     public boolean save(Books books) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        TransactionDAOImpl.books = books;
         session.save(books);
 
         transaction.commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public boolean saveSeveralObject(lk.ijse.entity.Transaction entity, User user , Books books) {
+        return false;
     }
 
     @Override
