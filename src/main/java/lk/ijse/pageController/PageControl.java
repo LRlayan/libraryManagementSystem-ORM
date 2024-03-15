@@ -9,8 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class PageControl {
     public void changeOnlyAnchorPane(String fxml , AnchorPane anchorPaneId) throws IOException {
@@ -50,5 +52,9 @@ public class PageControl {
                 lblPassword.setText("");
             }
         }
+    }
+
+    public String encryptPassword(String password) {
+        return new String(Base64.encodeBase64(password.getBytes(StandardCharsets.UTF_8)));
     }
 }
