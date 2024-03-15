@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.AdminBO;
 import lk.ijse.dto.BookDTO;
@@ -55,7 +54,7 @@ public class AdminFormController implements Initializable {
 
     @FXML
     public void settingOnAction(ActionEvent event) throws IOException {
-        pageControl.popUpWindow("/view/settingForm.fxml");
+        pageControl.popUpWindow("/view/adminSettingForm.fxml");
     }
 
     @FXML
