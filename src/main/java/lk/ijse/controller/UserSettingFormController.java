@@ -68,7 +68,7 @@ public class UserSettingFormController {
         String confirmPassword = txtConfirmPassword.getText();
 
         for (UserSettingDTO user : userSettingBO.getAllUser()){
-            String password = encryptPassword(currentPassword);
+            String password = pageControl.encryptPassword(currentPassword);
 
             if (user.getPassword().equals(password)){
                 lblCurrentPassword.setText("");
@@ -87,10 +87,6 @@ public class UserSettingFormController {
                 lblCurrentPassword.setText("invalid password");
             }
         }
-    }
-
-    private String encryptPassword(String password) {
-        return new String(Base64.encodeBase64(password.getBytes(StandardCharsets.UTF_8)));
     }
 
     @FXML
