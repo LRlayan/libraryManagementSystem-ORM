@@ -56,7 +56,6 @@ public class AddNewBookController {
             var bookDTO = new BookDTO(0, bookName, author, genre, availableStatus,imagePath);
 
             try {
-
                 boolean isSaved = bookBO.saveBook(bookDTO);
 
                 if (isSaved) {
