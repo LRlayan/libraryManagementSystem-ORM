@@ -13,7 +13,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        USER,SETTING,REGISTER,LOGIN,HISTORY,BOOK,ADMIN,BOOK_OBJ,BRANCH,TRANSACTION
+        USER,SETTING,REGISTER,LOGIN,HISTORY,BOOK,ADMIN,BOOK_OBJ,BRANCH,TRANSACTION,USER_SETTING
     }
 
     public SuperBO BOTypes(BOTypes boTypes){
@@ -38,6 +38,8 @@ public class BOFactory {
                 return new BookOBJBOImpl();
             case TRANSACTION:
                 return new TransactionBOImpl();
+            case USER_SETTING:
+                return new UserSettingBOImpl();
             default:
                 return null;
         }
