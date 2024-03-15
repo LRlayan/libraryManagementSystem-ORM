@@ -12,8 +12,6 @@ import java.util.List;
 
 public class TransactionDAOImpl implements TransactionDAO {
 
-
-
     @Override
     public boolean save(Transaction transaction) {
            return false;
@@ -39,11 +37,9 @@ public class TransactionDAOImpl implements TransactionDAO {
             transactions.add(transaction);
             session.save(transaction);
 
-                    System.out.println("awaaaaa");
-                    session.createQuery("UPDATE Books b SET b.availabilityStatus = :status WHERE b.id = :bookId")
-                        .setParameter("status" , status).setParameter("bookId" , books.getId())
-                        .executeUpdate();
-
+            session.createQuery("UPDATE Books b SET b.availabilityStatus = :status WHERE b.id = :bookId")
+                .setParameter("status" , status).setParameter("bookId" , books.getId())
+                .executeUpdate();
 
             transaction1.commit();
             return true;
@@ -60,8 +56,29 @@ public class TransactionDAOImpl implements TransactionDAO {
 
     @Override
     public boolean update(Transaction transaction) {
+        String status = "Available";
 
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        org.hibernate.Transaction transaction1 = null;
+
+        try {
+            transaction1 = session.beginTransaction();
+            session.createQuery("UPDATE Books b SET b.availabilityStatus = :status WHERE b.id = :bookId")
+                    .setParameter("status", status)
+                    .setParameter("bookId",transaction.getId())
+                    .executeUpdate();
+
+            transaction1.commit();
+            return true;
+        }catch (Exception e){
+            if (transaction1 != null){
+                transaction1.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
@@ -71,6 +88,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
     @Override
     public List<Transaction> getAll() {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        return session.createQuery("FROM Transaction ").list();
     }
 }
