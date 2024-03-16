@@ -51,7 +51,6 @@ public class adminHistoryFormController implements Initializable {
 
     ObservableList<HistoryTM> obList = FXCollections.observableArrayList();
     HistoryBO historyBO = (HistoryBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.HISTORY);
-    QueryBO queryBO = (QueryBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.QUERY_BO);
     PageControl pageControl = new PageControl();
     @FXML
     void closeWindowOnAction(ActionEvent event) {
@@ -122,5 +121,6 @@ public class adminHistoryFormController implements Initializable {
     @FXML
     void NotReturnBooksOnAction(ActionEvent event) throws IOException {
       pageControl.popUpWindow("/view/blackListUsers.fxml");
+      pageControl.closeWindow(btnClose);
     }
 }

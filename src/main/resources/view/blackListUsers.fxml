@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.controller.BlackListUsersController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #040D12;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BlackListUsersController">
+   <children>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="11.0" layoutY="14.0">
+         <image>
+            <Image url="@../image/blackListUser.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="backListTable" layoutX="57.0" layoutY="119.0" prefHeight="230.0" prefWidth="487.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="41.0" text="Id" />
+          <TableColumn fx:id="colName" prefWidth="135.0" text="User Name" />
+            <TableColumn fx:id="colEmail" prefWidth="218.0" text="Email" />
+            <TableColumn fx:id="colBranch" prefWidth="92.0" text="Branch" />
+        </columns>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TableView>
+      <Line endX="414.0" layoutX="161.0" layoutY="44.0" startX="-91.0" stroke="#008022" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="547.0" layoutY="7.0">
+         <image>
+            <Image url="@../image/closeIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="547.0" layoutY="7.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#756e6e">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="458.0" layoutY="361.0" onAction="#backOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #019104;" text="Back" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
 </AnchorPane>

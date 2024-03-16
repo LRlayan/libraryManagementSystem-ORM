@@ -35,7 +35,6 @@ public class AdminDAOImpl implements AdminDAO {
             transaction.commit();
             return true;
         }catch (Exception e){
-            e.printStackTrace();
             if (transaction != null){
                 transaction.rollback();
             }
