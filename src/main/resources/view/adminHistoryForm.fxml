@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -21,7 +22,10 @@
             <Image url="@../image/closeIcon.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnClose" layoutX="672.0" layoutY="6.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#756e6e" />
+      <JFXButton fx:id="btnClose" buttonType="RAISED" layoutX="672.0" layoutY="6.0" onAction="#closeWindowOnAction" prefHeight="30.0" prefWidth="30.0" text="." textFill="#756e6e">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
       <TableView fx:id="historyTable" layoutX="84.0" layoutY="94.0" prefHeight="273.0" prefWidth="559.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="43.0" text="id" />
@@ -31,7 +35,13 @@
             <TableColumn fx:id="colStartDate" prefWidth="103.0" text="Start Date" />
             <TableColumn fx:id="colReturnDate" prefWidth="96.0" text="Return Date" />
         </columns>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </TableView>
-      <JFXButton layoutX="532.0" layoutY="56.0" style="-fx-background-color: green;" text="Not Return Books" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="532.0" layoutY="56.0" onAction="#NotReturnBooksOnAction" style="-fx-background-color: green;" text="Not Return Books" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
    </children>
 </AnchorPane>

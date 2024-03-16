@@ -47,6 +47,9 @@ public class HistoryFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> colReturnBook;
 
+    @FXML
+    private TableColumn<?, ?> colStatus;
+
     PageControl pageControl = new PageControl();
     HistoryBO historyBO = (HistoryBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.HISTORY);
     ObservableList<HistoryTM> obList = FXCollections.observableArrayList();
@@ -70,6 +73,7 @@ public class HistoryFormController implements Initializable {
         colStartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         colReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
         colReturnBook.setCellValueFactory(new PropertyValueFactory<>("returnBook"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private void loadAllTransaction() {
@@ -82,7 +86,8 @@ public class HistoryFormController implements Initializable {
                         historyDTO.getTime(),
                         historyDTO.getStartDate(),
                         historyDTO.getReturnDate(),
-                        new JFXButton("Return Book")
+                        new JFXButton("Return Book"),
+                        historyDTO.getStatus()
                 ));
             }
             historyTable.setItems(obList);
@@ -102,7 +107,7 @@ public class HistoryFormController implements Initializable {
 
                         Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure return Book!", buttonYes, buttonNo).showAndWait();
                         if (type.get().getText().equals("Yes")) {
-                            var historyDTO = new HistoryDTO(newSelection.getId(), newSelection.getBookTitle(), newSelection.getNameOfUser(), newSelection.getTime(), newSelection.getStartDate(), newSelection.getReturnDate());
+                            var historyDTO = new HistoryDTO(newSelection.getId(), newSelection.getBookTitle(), newSelection.getNameOfUser(), newSelection.getTime(), newSelection.getStartDate(), newSelection.getReturnDate(),newSelection.getStatus());
 
                             try {
                                 boolean isUpdate = historyBO.updateBookStatus(historyDTO);

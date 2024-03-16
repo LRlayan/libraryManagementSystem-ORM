@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,10 +16,11 @@ public class HistoryTM {
     private String nameOfUser;
     private String time;
     private String startDate;
-    private String returnDate;
+    private LocalDate returnDate;
     private JFXButton returnBook;
+    private String status;
 
-    public HistoryTM(long id, String bookTitle, String nameOfUser, String time, String startDate, String returnDate) {
+    public HistoryTM(long id, String bookTitle, String nameOfUser, String time, String startDate, LocalDate returnDate) {
         this.id = id;
         this.bookTitle = bookTitle;
         this.nameOfUser = nameOfUser;

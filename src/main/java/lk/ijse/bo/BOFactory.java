@@ -13,7 +13,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        USER,SETTING,REGISTER,LOGIN,HISTORY,BOOK,ADMIN,BOOK_OBJ,BRANCH,TRANSACTION,USER_SETTING,ADMIN_SETTING,QUERY_BO
+        USER,SETTING,REGISTER,LOGIN,HISTORY,BOOK,ADMIN,BOOK_OBJ,BRANCH,TRANSACTION,USER_SETTING,ADMIN_SETTING,QUERY_BO,BLACKLIST
     }
 
     public SuperBO BOTypes(BOTypes boTypes){
@@ -44,6 +44,8 @@ public class BOFactory {
                 return new AdminSettingBOImpl();
             case QUERY_BO:
                 return new QueryBOImpl();
+            case BLACKLIST:
+                return new BlackListUsersBOImpl();
             default:
                 return null;
         }

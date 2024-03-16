@@ -11,7 +11,7 @@ public class DAOFactory {
         return (daoFactory == null) ? daoFactory = new DAOFactory() : daoFactory;
     }
     public enum DAOTypes{
-        USER,TRANSACTION,BRANCHES,ADMIN,BOOK
+        USER,TRANSACTION,BRANCHES,ADMIN,BOOK,QUERY
     }
     public SuperDAO DAOTypes(DAOTypes daoTypes){
         switch (daoTypes){
@@ -25,6 +25,8 @@ public class DAOFactory {
                 return new AdminDAOImpl();
             case BRANCHES:
                 return new BranchesDAOImpl();
+            case QUERY:
+                return new QueryDAOImpl();
             default:
                 return null;
         }

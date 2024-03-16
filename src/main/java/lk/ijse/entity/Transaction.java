@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,8 @@ public class Transaction {
     private String nameOfUser;
     private String time;
     private String startDate;
-    private String returnDate;
+    private LocalDate returnDate;
+    private String status;
     @ManyToOne
     @JoinColumn
     private User userList;
@@ -27,12 +29,13 @@ public class Transaction {
     @JoinColumn
     private Books bookList;
 
-    public Transaction(long id, String bookTitle, String nameOfUser, String time, String startDate, String returnDate) {
+    public Transaction(long id, String bookTitle, String nameOfUser, String time, String startDate, LocalDate returnDate, String status) {
         this.id = id;
         this.bookTitle = bookTitle;
         this.nameOfUser = nameOfUser;
         this.time = time;
         this.startDate = startDate;
         this.returnDate = returnDate;
+        this.status = status;
     }
 }

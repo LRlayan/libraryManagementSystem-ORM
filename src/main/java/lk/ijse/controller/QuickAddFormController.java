@@ -17,6 +17,7 @@ import lk.ijse.pageController.PageControl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -61,7 +62,8 @@ public class QuickAddFormController implements Initializable {
         String title = txtTitle.getText();
         String time = String.valueOf(txtTime.getValue());
         String startDate = String.valueOf(txtStartDate.getValue());
-        String returnDate = String.valueOf(txtReturnDate.getValue());
+        LocalDate returnDate = txtReturnDate.getValue();
+        String status = "taked book";
 
         for(UserDTO users : transactionBO.getAllUser()){
              userDTO = new UserDTO(users.getId(),users.getName(),users.getEmail(),users.getBranch(),users.getPassword());
@@ -74,7 +76,7 @@ public class QuickAddFormController implements Initializable {
         boolean nameUser = Pattern.matches("[a-zA-Z]+",name);
         boolean bookTitle = Pattern.matches("[a-zA-Z0-9]+",title);
 
-        var transactionDTO = new TransactionDTO(0,name,title,time,startDate,returnDate);
+        var transactionDTO = new TransactionDTO(0,name,title,time,startDate,returnDate,status);
         if (nameUser && bookTitle){
             boolean isSaved = transactionBO.saveTransaction(transactionDTO,userDTO,bookDTO);
             if (isSaved){

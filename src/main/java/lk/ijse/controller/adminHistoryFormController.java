@@ -11,11 +11,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.HistoryBO;
+import lk.ijse.bo.custom.QueryBO;
+import lk.ijse.dao.custom.QueryDAO;
 import lk.ijse.dto.HistoryDTO;
+import lk.ijse.dto.UserDTO;
 import lk.ijse.dto.tm.HistoryTM;
 import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -46,6 +51,7 @@ public class adminHistoryFormController implements Initializable {
 
     ObservableList<HistoryTM> obList = FXCollections.observableArrayList();
     HistoryBO historyBO = (HistoryBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.HISTORY);
+    QueryBO queryBO = (QueryBO) BOFactory.getBoFactory().BOTypes(BOFactory.BOTypes.QUERY_BO);
     PageControl pageControl = new PageControl();
     @FXML
     void closeWindowOnAction(ActionEvent event) {
@@ -81,11 +87,6 @@ public class adminHistoryFormController implements Initializable {
             }
             historyTable.setItems(obList);
 
-            for (int i = 0; i < obList.size(); i++) {
-                obList.get(i).getReturnBook().setTextFill(Color.WHITE);
-                obList.get(i).getReturnBook().setStyle("-fx-background-color: #0089ab");
-            }
-
             historyTable.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection)->{
                 for (int i = 0; i < obList.size(); i++) {
 
@@ -116,5 +117,10 @@ public class adminHistoryFormController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void NotReturnBooksOnAction(ActionEvent event) throws IOException {
+      pageControl.popUpWindow("/view/blackListUsers.fxml");
     }
 }

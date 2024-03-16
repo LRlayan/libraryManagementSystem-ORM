@@ -7,6 +7,7 @@ import lk.ijse.entity.Transaction;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class TransactionDAOImpl implements TransactionDAO {
     @Override
     public boolean update(Transaction transaction) {
         String status = "Available";
+        String transactionBookStatus = "Returned";
 
         Session session = FactoryConfiguration.getInstance().getSession();
         org.hibernate.Transaction transaction1 = null;
@@ -66,6 +68,11 @@ public class TransactionDAOImpl implements TransactionDAO {
             session.createQuery("UPDATE Books b SET b.availabilityStatus = :status WHERE b.id = :bookId")
                     .setParameter("status", status)
                     .setParameter("bookId",transaction.getId())
+                    .executeUpdate();
+
+            session.createQuery("UPDATE Transaction t SET t.status = :transactionBookStatus WHERE t.id = :transactionId")
+                    .setParameter("transactionBookStatus", transactionBookStatus)
+                    .setParameter("transactionId",transaction.getId())
                     .executeUpdate();
 
             transaction1.commit();
@@ -90,5 +97,25 @@ public class TransactionDAOImpl implements TransactionDAO {
     public List<Transaction> getAll() {
         Session session = FactoryConfiguration.getInstance().getSession();
         return session.createQuery("FROM Transaction ").list();
+    }
+
+    @Override
+    public List<User> getUsersWithOverdueBooks() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+
+            String currentDate = String.valueOf(LocalDate.now());
+
+            List<User> users = session.createQuery("SELECT DISTINCT t.userList FROM Transaction t WHERE t.returnDate < :currentDate", User.class)
+                    .setParameter("currentDate", currentDate)
+                    .getResultList();
+
+            return users;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
     }
 }

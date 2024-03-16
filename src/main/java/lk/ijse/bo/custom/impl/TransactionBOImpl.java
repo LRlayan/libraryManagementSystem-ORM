@@ -22,7 +22,7 @@ public class TransactionBOImpl implements TransactionBO {
     BookDAO bookDAO = (BookDAO) DAOFactory.getDaoFactory().DAOTypes(DAOFactory.DAOTypes.BOOK);
     @Override
     public boolean saveTransaction(TransactionDTO transactionDTO, UserDTO userDTO , BookDTO bookDTO) {
-        return transactionDAO.saveSeveralObject(new Transaction(transactionDTO.getId(),transactionDTO.getBookTitle(),transactionDTO.getNameOfUser(),transactionDTO.getTime(),transactionDTO.getStartDate(),transactionDTO.getReturnDate()),
+        return transactionDAO.saveSeveralObject(new Transaction(transactionDTO.getId(),transactionDTO.getBookTitle(),transactionDTO.getNameOfUser(),transactionDTO.getTime(),transactionDTO.getStartDate(),transactionDTO.getReturnDate(),transactionDTO.getStatus()),
                 new User(userDTO.getId(),userDTO.getName(),userDTO.getEmail(),userDTO.getBranch(),userDTO.getPassword()),
                 new Books(bookDTO.getId(),bookDTO.getTitle(),bookDTO.getAuthor(),bookDTO.getGenre(),bookDTO.getAvailabilityStatus()));
     }

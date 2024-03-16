@@ -13,4 +13,11 @@ public class UserDTO {
     private String email;
     private String password;
     private String branch;
+
+    public UserDTO(long id, String name, String email, String branchName) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.branch = branchName;
+    }
 }
