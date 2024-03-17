@@ -22,6 +22,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.AddNewBookController.*;
+
 public class AdminFormController implements Initializable {
 
     @FXML
@@ -93,6 +95,7 @@ public class AdminFormController implements Initializable {
                 ));
             }
             bookTable.setItems(obList);
+            bookTable.refresh();
         }catch (Exception e){
             e.printStackTrace();
         }

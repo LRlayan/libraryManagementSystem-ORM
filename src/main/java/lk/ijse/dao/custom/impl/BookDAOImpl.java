@@ -4,6 +4,7 @@ import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.entity.Books;
+import lk.ijse.entity.Branches;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -61,16 +62,27 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public boolean delete(long id) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Books books = session.get(Books.class, id);
 
-        Query query = session.createQuery("DELETE FROM Books b WHERE b.id = :id");
-        query.setParameter("id",id);
+            for (lk.ijse.entity.Transaction transaction1 : books.getTransactions()) {
+                session.delete(transaction1);
+            }
 
-        int row = query.executeUpdate();
+            session.delete(books);
 
-        transaction.commit();
-        session.close();
-        return row > 0;
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return false;
+        }
     }
 
     @Override

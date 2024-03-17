@@ -17,6 +17,7 @@ import lk.ijse.dto.tm.BlackListTM;
 import lk.ijse.entity.User;
 import lk.ijse.pageController.PageControl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
@@ -81,5 +82,10 @@ public class BlackListUsersController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void backOnAction(ActionEvent event) throws IOException {
+        pageControl.closeWindow(btnClose);
+        pageControl.popUpWindow("/view/adminHistoryForm.fxml");
     }
 }
